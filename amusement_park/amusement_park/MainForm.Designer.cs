@@ -1,6 +1,6 @@
 ﻿namespace amusement_park
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            button_login = new Button();
+            SuspendLayout();
+            // 
+            // button_login
+            // 
+            button_login.Location = new Point(6, 8);
+            button_login.Name = "button_login";
+            button_login.Size = new Size(77, 33);
+            button_login.TabIndex = 0;
+            button_login.Text = "войти";
+            button_login.UseVisualStyleBackColor = true;
+            button_login.Click += button_login_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(957, 575);
+            Controls.Add(button_login);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button button_login;
     }
 }
