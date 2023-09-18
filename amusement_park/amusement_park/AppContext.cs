@@ -1,10 +1,9 @@
-﻿
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace amusement_park
 {
@@ -14,7 +13,7 @@ namespace amusement_park
 
         public AppContext() : base("DefaultConnection")
         {
-
+            
         }
     }
 }
