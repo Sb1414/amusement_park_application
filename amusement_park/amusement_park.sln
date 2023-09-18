@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "amusement_park", "amusement_park\amusement_park.csproj", "{D99B6615-4FD0-49D9-A3BA-EB8D63E6B342}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "amusement_park", "amusement_park\amusement_park.csproj", "{608D3113-F730-4E4D-8AD0-B41B5252D7E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D99B6615-4FD0-49D9-A3BA-EB8D63E6B342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D99B6615-4FD0-49D9-A3BA-EB8D63E6B342}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D99B6615-4FD0-49D9-A3BA-EB8D63E6B342}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D99B6615-4FD0-49D9-A3BA-EB8D63E6B342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608D3113-F730-4E4D-8AD0-B41B5252D7E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608D3113-F730-4E4D-8AD0-B41B5252D7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608D3113-F730-4E4D-8AD0-B41B5252D7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608D3113-F730-4E4D-8AD0-B41B5252D7E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4D6D6228-10D1-4016-801F-537CB88227AC}
+		SolutionGuid = {CF56C916-FC7A-482F-820E-F14DCF25B00D}
 	EndGlobalSection
 EndGlobal

@@ -63,9 +63,9 @@ namespace amusement_park.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_close_20 {
+        internal static System.Drawing.Bitmap backClick {
             get {
-                object obj = ResourceManager.GetObject("icons8-close-20", resourceCulture);
+                object obj = ResourceManager.GetObject("backClick", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,49 @@ namespace amusement_park.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_close_30 {
+        internal static System.Drawing.Bitmap backLogClick {
             get {
-                object obj = ResourceManager.GetObject("icons8-close-30", resourceCulture);
+                object obj = ResourceManager.GetObject("backLogClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backPassClick {
+            get {
+                object obj = ResourceManager.GetObject("backPassClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_закрыть_20__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-закрыть-20 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_полный_экран_20__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-полный-экран-20 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_свернуть_20__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-свернуть-20 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
