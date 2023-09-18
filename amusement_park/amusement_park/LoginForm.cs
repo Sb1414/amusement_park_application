@@ -44,8 +44,8 @@ namespace amusement_park
 
         private void label2_Click(object sender, EventArgs e)
         {
-            // FormReg form2 = new FormReg();
-            // form2.Show();
+            RegForm form2 = new RegForm();
+            form2.Show();
             this.Hide();
         }
 
