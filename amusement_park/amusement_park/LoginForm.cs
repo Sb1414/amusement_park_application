@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -71,44 +72,35 @@ namespace amusement_park
             }
             else
             {
+                string connectionString = "Data Source=sb.db;Version=3;";
                 string loginUser = textBoxLogin.Text;
                 string passUser = textBoxPass.Text;
-                /*
-                DataBank.loginUser = loginUser;
-                DataBank.passwordUser = passUser;
-
-                DBclass db = new DBclass();
-
-                DataTable table = new DataTable();
-
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `user` WHERE `Login` = @uL AND `Password` = @uP", db.getConnection());
-                command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
-                command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
-
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
-
-                labelInfo.Text = "Проверка...";
-                labelInfo.ForeColor = Color.FromArgb(230, 179, 51);
-
-                if (table.Rows.Count > 0)
+                string query = "SELECT id FROM users WHERE login = @login AND password = @password";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
-                    labelInfo.Text = "Выполняется вход";
-                    labelInfo.ForeColor = Color.FromArgb(230, 179, 51);
+                    connection.Open();
 
-                    Form3 form3 = new Form3();
-                    form3.Show();
-                    this.Hide();
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@login", loginUser);
+                        cmd.Parameters.AddWithValue("@password", passUser);
 
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            int userId = Convert.ToInt32(result);
+                            this.Close();
+                        }
+                        else
+                        {
+                            labelInfo.Text = "Неправильный логин или пароль";
+                            labelInfo.ForeColor = Color.Red;
+                        }
+                    }
                 }
-                else
-                {
-                    labelInfo.Text = "Пользователь не найден";
-                    labelInfo.ForeColor = Color.Red;
-                }
-                */
+
+               
             }
         }
 

@@ -30,12 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBoxDate = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.labelInfo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxPass = new System.Windows.Forms.TextBox();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -44,8 +50,10 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panelUp.SuspendLayout();
             this.panelBorder.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +61,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.labelInfo);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
@@ -63,8 +72,45 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(532, 554);
+            this.panel1.Size = new System.Drawing.Size(532, 622);
             this.panel1.TabIndex = 2;
+            // 
+            // panel5
+            // 
+            this.panel5.BackgroundImage = global::amusement_park.Properties.Resources.backClick;
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel5.Controls.Add(this.textBoxDate);
+            this.panel5.Controls.Add(this.textBoxEmail);
+            this.panel5.Location = new System.Drawing.Point(94, 343);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(341, 128);
+            this.panel5.TabIndex = 22;
+            // 
+            // textBoxDate
+            // 
+            this.textBoxDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.textBoxDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxDate.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold);
+            this.textBoxDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(179)))), ((int)(((byte)(51)))));
+            this.textBoxDate.Location = new System.Drawing.Point(39, 78);
+            this.textBoxDate.Name = "textBoxDate";
+            this.textBoxDate.Size = new System.Drawing.Size(260, 24);
+            this.textBoxDate.TabIndex = 4;
+            this.textBoxDate.Enter += new System.EventHandler(this.textBoxDate_Enter);
+            this.textBoxDate.Leave += new System.EventHandler(this.textBoxDate_Leave);
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxEmail.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold);
+            this.textBoxEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(179)))), ((int)(((byte)(51)))));
+            this.textBoxEmail.Location = new System.Drawing.Point(39, 20);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(260, 24);
+            this.textBoxEmail.TabIndex = 3;
+            this.textBoxEmail.Enter += new System.EventHandler(this.textBoxEmail_Enter);
+            this.textBoxEmail.Leave += new System.EventHandler(this.textBoxEmail_Leave);
             // 
             // labelInfo
             // 
@@ -73,7 +119,7 @@
             this.labelInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelInfo.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(128)))), ((int)(((byte)(132)))));
-            this.labelInfo.Location = new System.Drawing.Point(3, 360);
+            this.labelInfo.Location = new System.Drawing.Point(3, 480);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(527, 28);
             this.labelInfo.TabIndex = 22;
@@ -85,7 +131,7 @@
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Controls.Add(this.textBoxPass);
             this.panel3.Controls.Add(this.textBoxLogin);
-            this.panel3.Location = new System.Drawing.Point(94, 234);
+            this.panel3.Location = new System.Drawing.Point(94, 209);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(341, 128);
             this.panel3.TabIndex = 21;
@@ -122,8 +168,9 @@
             this.panel2.BackgroundImage = global::amusement_park.Properties.Resources.backClick;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.textBoxSurname);
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.textBoxName);
-            this.panel2.Location = new System.Drawing.Point(94, 111);
+            this.panel2.Location = new System.Drawing.Point(94, 86);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(341, 128);
             this.panel2.TabIndex = 20;
@@ -140,6 +187,44 @@
             this.textBoxSurname.TabIndex = 2;
             this.textBoxSurname.Enter += new System.EventHandler(this.textBoxSurname_Enter);
             this.textBoxSurname.Leave += new System.EventHandler(this.textBoxSurname_Leave);
+            // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = global::amusement_park.Properties.Resources.backClick;
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Location = new System.Drawing.Point(0, 123);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(341, 128);
+            this.panel4.TabIndex = 21;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold);
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(179)))), ((int)(((byte)(51)))));
+            this.textBox1.Location = new System.Drawing.Point(39, 78);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '●';
+            this.textBox1.Size = new System.Drawing.Size(260, 24);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Enter += new System.EventHandler(this.textBoxPass_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBoxPass_Leave);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold);
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(179)))), ((int)(((byte)(51)))));
+            this.textBox2.Location = new System.Drawing.Point(39, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(260, 24);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Enter += new System.EventHandler(this.textBoxLogin_Enter);
+            this.textBox2.Leave += new System.EventHandler(this.textBoxLogin_Leave);
             // 
             // textBoxName
             // 
@@ -161,7 +246,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(128)))), ((int)(((byte)(132)))));
-            this.label2.Location = new System.Drawing.Point(1, 450);
+            this.label2.Location = new System.Drawing.Point(1, 570);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(527, 28);
             this.label2.TabIndex = 17;
@@ -180,7 +265,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold);
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(154, 391);
+            this.buttonSave.Location = new System.Drawing.Point(154, 511);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(211, 42);
             this.buttonSave.TabIndex = 16;
@@ -193,7 +278,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Rockwell", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(128)))), ((int)(((byte)(132)))));
-            this.label1.Location = new System.Drawing.Point(0, 71);
+            this.label1.Location = new System.Drawing.Point(2, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(527, 28);
             this.label1.TabIndex = 2;
@@ -236,14 +321,14 @@
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(532, 554);
+            this.panelBorder.Size = new System.Drawing.Size(532, 622);
             this.panelBorder.TabIndex = 4;
             // 
             // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 554);
+            this.ClientSize = new System.Drawing.Size(532, 622);
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -251,10 +336,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegForm";
             this.panel1.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panelUp.ResumeLayout(false);
             this.panelBorder.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -277,5 +366,11 @@
         private System.Windows.Forms.Panel panelUp;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Panel panelBorder;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox textBoxDate;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

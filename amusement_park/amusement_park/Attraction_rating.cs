@@ -8,9 +8,33 @@ namespace amusement_park
 {
     internal class Attraction_rating
     {
-        private int id { get; set; }
+        public int id { get; set; }
         private int person_id, attraction_id, rating;
         private string comment;
+
+        public int Person_id
+        {
+            get { return person_id; }
+            set { person_id = value; }
+        }
+
+        public int Attraction_id
+        {
+            get { return attraction_id; }
+            set { attraction_id = value; }
+        }
+
+        public int Rating
+        {
+            get { return rating; }
+            set { rating = value; }
+        }
+
+        public string Comment
+        {
+            get { return comment; }
+            set { comment = value; }
+        }
 
         public Attraction_rating() { }
         public Attraction_rating(int person_id, int attraction_id, int rating, string comment)

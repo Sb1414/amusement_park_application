@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,12 @@ namespace amusement_park
             textBoxName.ForeColor = Color.FromArgb(127, 128, 132);
             textBoxSurname.Text = "Фамилия";
             textBoxSurname.ForeColor = Color.FromArgb(127, 128, 132);
+            textBoxEmail.Text = "Email";
+            textBoxEmail.ForeColor = Color.FromArgb(127, 128, 132);
+            textBoxDate.Text = "Дата рождения";
+            textBoxDate.ForeColor = Color.FromArgb(127, 128, 132);
             labelInfo.Text = "";
+
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -67,6 +73,7 @@ namespace amusement_park
             }
             panel2.BackgroundImage = Properties.Resources.backClick;
             panel3.BackgroundImage = Properties.Resources.backLogClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
@@ -80,6 +87,7 @@ namespace amusement_park
             }
             panel3.BackgroundImage = Properties.Resources.backPassClick;
             panel2.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
@@ -93,6 +101,7 @@ namespace amusement_park
             }
             panel3.BackgroundImage = Properties.Resources.backClick;
             panel2.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
@@ -105,6 +114,7 @@ namespace amusement_park
             }
             panel3.BackgroundImage = Properties.Resources.backClick;
             panel2.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
@@ -117,6 +127,7 @@ namespace amusement_park
             }
             panel2.BackgroundImage = Properties.Resources.backLogClick;
             panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
@@ -129,6 +140,7 @@ namespace amusement_park
             }
             panel2.BackgroundImage = Properties.Resources.backClick;
             panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
@@ -141,6 +153,7 @@ namespace amusement_park
             }
             panel2.BackgroundImage = Properties.Resources.backPassClick;
             panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
@@ -153,9 +166,61 @@ namespace amusement_park
             }
             panel2.BackgroundImage = Properties.Resources.backClick;
             panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
             labelInfo.Text = "";
         }
 
+        private void textBoxEmail_Enter(object sender, EventArgs e)
+        {
+            if (textBoxEmail.Text == "Email")
+            {
+                textBoxEmail.Text = "";
+                textBoxEmail.ForeColor = Color.FromArgb(230, 179, 51);
+            }
+            panel2.BackgroundImage = Properties.Resources.backClick;
+            panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backLogClick;
+            labelInfo.Text = "";
+        }
+
+        private void textBoxEmail_Leave(object sender, EventArgs e)
+        {
+            if (textBoxEmail.Text == "")
+            {
+                textBoxEmail.Text = "Email";
+                textBoxEmail.ForeColor = Color.FromArgb(127, 128, 132);
+            }
+            panel2.BackgroundImage = Properties.Resources.backClick;
+            panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
+            labelInfo.Text = "";
+        }
+
+        private void textBoxDate_Enter(object sender, EventArgs e)
+        {
+            if (textBoxDate.Text == "Дата рождения")
+            {
+                textBoxDate.Text = "";
+                textBoxDate.ForeColor = Color.FromArgb(230, 179, 51);
+            }
+            panel2.BackgroundImage = Properties.Resources.backClick;
+            panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backPassClick;
+            labelInfo.Text = "";
+        }
+
+        private void textBoxDate_Leave(object sender, EventArgs e)
+        {
+            if (textBoxDate.Text == "")
+            {
+                textBoxDate.Text = "Дата рождения";
+                textBoxDate.ForeColor = Color.FromArgb(127, 128, 132);
+            }
+            panel2.BackgroundImage = Properties.Resources.backClick;
+            panel3.BackgroundImage = Properties.Resources.backClick;
+            panel5.BackgroundImage = Properties.Resources.backClick;
+            labelInfo.Text = "";
+        }
         private void label2_Click_1(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm();
@@ -178,20 +243,54 @@ namespace amusement_park
             }
             else
             {
+                User newUser = new User
+                {
+                    Login = textBoxLogin.Text,
+                    Password = textBoxPass.Text
+                };
+                
+                Person newPerson = new Person()
+                {
+                    Name = textBoxName.Text,
+                    Surname = textBoxSurname.Text,
+                    Date = textBoxDate.Text,
+                    Email = textBoxEmail.Text
+                };
+
+
+                string connectionString = "Data Source=sb.db;Version=3;";
+
+                string queryUsers = "INSERT INTO users (login, password) VALUES (@login, @password)";
+                string queryPersons = "INSERT INTO persons (user_id, name, surname, date, email) VALUES ((SELECT last_insert_rowid()), @name, @surname, @date, @email)";
+
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        using (SQLiteCommand cmdUsers = new SQLiteCommand(queryUsers, connection))
+                        {
+                            cmdUsers.Parameters.AddWithValue("@login", newUser.Login);
+                            cmdUsers.Parameters.AddWithValue("@password", newUser.Password);
+                            cmdUsers.ExecuteNonQuery();
+                        }
+
+                        using (SQLiteCommand cmdPersons = new SQLiteCommand(queryPersons, connection))
+                        {
+                            cmdPersons.Parameters.AddWithValue("@name", newPerson.Name);
+                            cmdPersons.Parameters.AddWithValue("@surname", newPerson.Surname);
+                            cmdPersons.Parameters.AddWithValue("@date", newPerson.Date);
+                            cmdPersons.Parameters.AddWithValue("@email", newPerson.Email);
+                            cmdPersons.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                }
+
+
                 /*
-                DBclass db = new DBclass();
-                MySqlCommand command = new MySqlCommand("INSERT INTO `user` (`login`, `password`, `name`, `surname`) VALUES (@login, @pass, @name, @surname)", db.getConnection());
-
-                command.Parameters.Add("@login", MySqlDbType.VarChar).Value = textBoxLogin.Text;
-                command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = textBoxPass.Text;
-                command.Parameters.Add("@name", MySqlDbType.VarChar).Value = textBoxName.Text;
-                command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = textBoxSurname.Text;
-
-                db.openConnection();
-
-                labelInfo.Text = "Создание аккаунта..";
-                labelInfo.ForeColor = Color.FromArgb(230, 179, 51);
-
                 if (command.ExecuteNonQuery() == 1)
                 {
                     labelInfo.Text = "Аккаунт создан, войдите!";
@@ -209,36 +308,17 @@ namespace amusement_park
                 {
                     labelInfo.Text = "Аккаунт не был создан";
                     labelInfo.ForeColor = Color.Red;
-                }
-                */
+                }*/
+                
             }
         }
+
+
 
         public Boolean checkUser()
         {
-            /*
-            labelInfo.Text = "";
-            DBclass db = new DBclass();
-
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `user` WHERE `Login` = @uL", db.getConnection());
-            command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = textBoxLogin.Text;
-
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-
-            if (table.Rows.Count > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            */
             return false;
         }
+
     }
 }

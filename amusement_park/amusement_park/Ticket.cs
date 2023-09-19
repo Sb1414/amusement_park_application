@@ -8,9 +8,20 @@ namespace amusement_park
 {
     internal class Ticket
     {
-        private int id { get; set; }
-        private int person_id { get; set; }
-        private int attraction_id { get; set; }
+        public int id { get; set; }
+        private int person_id, attraction_id;
+
+        public int Person_id
+        {
+            get { return person_id; }
+            set { person_id = value; }
+        }
+
+        public int Attraction_id
+        {
+            get { return attraction_id; }
+            set { attraction_id = value; }
+        }
 
         public Ticket() { }
         public Ticket(int person_id, int attraction_id)
