@@ -89,6 +89,11 @@ namespace amusement_park
 
                         if (result != null)
                         {
+                            if (loginUser == "admin")
+                            {
+                                AdminForm adminForm = new AdminForm();
+                                adminForm.Show();
+                            }
                             int userId = Convert.ToInt32(result);
                             this.Close();
                         }

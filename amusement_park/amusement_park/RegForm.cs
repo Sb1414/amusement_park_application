@@ -287,29 +287,7 @@ namespace amusement_park
 
                         transaction.Commit();
                     }
-                }
-
-
-                /*
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    labelInfo.Text = "Аккаунт создан, войдите!";
-                    labelInfo.ForeColor = Color.FromArgb(230, 179, 51);
-
-                    DataBank.loginUser = textBoxLogin.Text;
-                    DataBank.passwordUser = textBoxPass.Text;
-
-                    Form3 form3 = new Form3();
-                    form3.Show();
-                    this.Hide();
-
-                }
-                else
-                {
-                    labelInfo.Text = "Аккаунт не был создан";
-                    labelInfo.ForeColor = Color.Red;
-                }*/
-                
+                }                
             }
         }
 
