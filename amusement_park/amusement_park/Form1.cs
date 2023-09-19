@@ -13,6 +13,7 @@ namespace amusement_park
     public partial class Form1 : Form
     {
         private bool flag = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -55,7 +56,14 @@ namespace amusement_park
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+            loginForm.ShowDialog(); // форма как модальное окно
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadForm formLoad = new LoadForm();
+            formLoad.TopMost = true; // чтобы форма была верхней
+            formLoad.ShowDialog();
         }
     }
 }
