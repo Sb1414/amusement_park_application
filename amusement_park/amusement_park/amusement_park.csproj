@@ -170,8 +170,17 @@
     <Compile Include="RegForm.Designer.cs">
       <DependentUpon>RegForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TableUsersForm.Designer.cs">
+      <DependentUpon>TableUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ticket.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +202,9 @@
     </Compile>
     <EmbeddedResource Include="RegForm.resx">
       <DependentUpon>RegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableUsersForm.resx">
+      <DependentUpon>TableUsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

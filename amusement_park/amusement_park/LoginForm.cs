@@ -46,6 +46,7 @@ namespace amusement_park
         private void label2_Click(object sender, EventArgs e)
         {
             RegForm form2 = new RegForm();
+            form2.TopMost = true;
             form2.Show();
             this.Hide();
         }
@@ -92,6 +93,7 @@ namespace amusement_park
                             if (loginUser == "admin")
                             {
                                 AdminForm adminForm = new AdminForm();
+                                adminForm.TopMost = true;
                                 adminForm.Show();
                             }
                             int userId = Convert.ToInt32(result);
