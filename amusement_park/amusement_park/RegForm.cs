@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -231,14 +232,24 @@ namespace amusement_park
         private void buttonSave_Click(object sender, EventArgs e)
         {
             labelInfo.Text = "";
-            if ((textBoxLogin.Text == "" | textBoxLogin.Text == "Логин") | (textBoxPass.Text == "" | textBoxPass.Text == "Пароль") | (textBoxName.Text == "" | textBoxName.Text == "Имя") | (textBoxSurname.Text == "" | textBoxSurname.Text == "Фамилия"))
+            if ((textBoxLogin.Text == "" || textBoxLogin.Text == "Логин") || (textBoxPass.Text == "" || textBoxPass.Text == "Пароль") || (textBoxName.Text == "" || textBoxName.Text == "Имя") || (textBoxSurname.Text == "" || textBoxSurname.Text == "Фамилия") || (textBoxDate.Text == "" || textBoxDate.Text == "Дата") || (textBoxEmail.Text == "" || textBoxEmail.Text == "Email"))
             {
                 labelInfo.Text = "Заполнены не все поля!";
                 labelInfo.ForeColor = Color.Red;
             }
-            else if (checkUser())
+            else if (checkUser(textBoxLogin.Text))
             {
                 labelInfo.Text = "Такой логин уже существует";
+                labelInfo.ForeColor = Color.Red;
+            }
+            else if (!IsValidEmail(textBoxEmail.Text))
+            {
+                labelInfo.Text = "Введите корректный Email адрес";
+                labelInfo.ForeColor = Color.Red;
+            }
+            else if (!IsValidDateFormat(textBoxDate.Text))
+            {
+                labelInfo.Text = "Введите дату в формате 'гггг-мм-дд'";
                 labelInfo.ForeColor = Color.Red;
             }
             else
@@ -248,7 +259,7 @@ namespace amusement_park
                     Login = textBoxLogin.Text,
                     Password = textBoxPass.Text
                 };
-                
+
                 Person newPerson = new Person()
                 {
                     Name = textBoxName.Text,
@@ -256,7 +267,6 @@ namespace amusement_park
                     Date = textBoxDate.Text,
                     Email = textBoxEmail.Text
                 };
-
 
                 string connectionString = "Data Source=sb.db;Version=3;";
 
@@ -269,33 +279,75 @@ namespace amusement_park
 
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
-                        using (SQLiteCommand cmdUsers = new SQLiteCommand(queryUsers, connection))
+                        try
                         {
-                            cmdUsers.Parameters.AddWithValue("@login", newUser.Login);
-                            cmdUsers.Parameters.AddWithValue("@password", newUser.Password);
-                            cmdUsers.ExecuteNonQuery();
-                        }
+                            using (SQLiteCommand cmdUsers = new SQLiteCommand(queryUsers, connection))
+                            {
+                                cmdUsers.Parameters.AddWithValue("@login", newUser.Login);
+                                cmdUsers.Parameters.AddWithValue("@password", newUser.Password);
+                                cmdUsers.ExecuteNonQuery();
+                            }
 
-                        using (SQLiteCommand cmdPersons = new SQLiteCommand(queryPersons, connection))
+                            using (SQLiteCommand cmdPersons = new SQLiteCommand(queryPersons, connection))
+                            {
+                                cmdPersons.Parameters.AddWithValue("@name", newPerson.Name);
+                                cmdPersons.Parameters.AddWithValue("@surname", newPerson.Surname);
+                                cmdPersons.Parameters.AddWithValue("@date", newPerson.Date);
+                                cmdPersons.Parameters.AddWithValue("@email", newPerson.Email);
+                                cmdPersons.ExecuteNonQuery();
+                            }
+
+                            transaction.Commit();
+                            labelInfo.Text = "Регистрация успешно завершена!";
+                            labelInfo.ForeColor = Color.Green;
+                        }
+                        catch (Exception ex)
                         {
-                            cmdPersons.Parameters.AddWithValue("@name", newPerson.Name);
-                            cmdPersons.Parameters.AddWithValue("@surname", newPerson.Surname);
-                            cmdPersons.Parameters.AddWithValue("@date", newPerson.Date);
-                            cmdPersons.Parameters.AddWithValue("@email", newPerson.Email);
-                            cmdPersons.ExecuteNonQuery();
+                            transaction.Rollback();
+                            labelInfo.Text = "Ошибка при регистрации: " + ex.Message;
+                            labelInfo.ForeColor = Color.Red;
                         }
-
-                        transaction.Commit();
                     }
-                }                
+                }
             }
         }
 
-
-
-        public Boolean checkUser()
+        private bool checkUser(string login)
         {
-            return false;
+            // Проверка на уникальность логина
+            string connectionString = "Data Source=sb.db;Version=3;";
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT(*) FROM users WHERE login = @login";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@login", login);
+                    int userCount = Convert.ToInt32(cmd.ExecuteScalar());
+                    return userCount > 0;
+                }
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            // Проверка на корректный Email адрес
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool IsValidDateFormat(string date)
+        {
+            // Проверка на корректный формат даты
+            DateTime parsedDate;
+            return DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate);
         }
 
     }
