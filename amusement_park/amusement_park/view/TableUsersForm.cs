@@ -109,35 +109,9 @@ namespace amusement_park
                     return; // Не выполняем удаление
                 }
 
-                // Выполняем запрос на удаление пользователя из таблицы "persons"
-                string connectionString = "Data Source=sb.db;Version=3;";
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                if (DeleteUser(userId))
                 {
-                    connection.Open();
-
-                    // SQL-запрос для удаления пользователя из таблицы "persons" по "user_id"
-                    string queryPersons = "DELETE FROM persons WHERE user_id = @userId";
-                    using (SQLiteCommand cmdPersons = new SQLiteCommand(queryPersons, connection))
-                    {
-                        cmdPersons.Parameters.AddWithValue("@userId", userId);
-                        cmdPersons.ExecuteNonQuery();
-                    }
-
-                    // Затем выполняем запрос на удаление пользователя из таблицы "users"
-                    string queryUsers = "DELETE FROM users WHERE id = @userId";
-                    using (SQLiteCommand cmdUsers = new SQLiteCommand(queryUsers, connection))
-                    {
-                        cmdUsers.Parameters.AddWithValue("@userId", userId);
-                        cmdUsers.ExecuteNonQuery();
-                    }
-
-                    // После удаления пользователя обновляем DataGridView
-                    DataTable dt = (DataTable)dataGridViewUsers.DataSource;
-                    DataRow[] rowsToDelete = dt.Select("id = " + userId);
-                    foreach (DataRow row in rowsToDelete)
-                    {
-                        dt.Rows.Remove(row);
-                    }
+                    loadTable();
                 }
             }
             else
@@ -145,6 +119,45 @@ namespace amusement_park
                 MessageBox.Show("Выберите пользователя для удаления.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private bool DeleteUser(int userId)
+        {
+            try
+            {
+                string connectionString = "Data Source=sb.db;Version=3;";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        // Удаление пользователя из таблицы users
+                        string deleteUserQuery = "DELETE FROM users WHERE id = @userId";
+                        using (SQLiteCommand cmdDeleteUser = new SQLiteCommand(deleteUserQuery, connection, transaction))
+                        {
+                            cmdDeleteUser.Parameters.AddWithValue("@userId", userId);
+                            cmdDeleteUser.ExecuteNonQuery();
+                        }
+
+                        // Обновление ID всех остальных пользователей
+                        string updateIdQuery = "UPDATE users SET id = id - 1 WHERE id > @userId";
+                        using (SQLiteCommand cmdUpdateId = new SQLiteCommand(updateIdQuery, connection, transaction))
+                        {
+                            cmdUpdateId.Parameters.AddWithValue("@userId", userId);
+                            cmdUpdateId.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                }
+
+                return true; // Успешно удален пользователь и обновлены ID
+            }
+            catch
+            {
+                return false; // Ошибка при удалении пользователя или обновлении ID
+            }
+        }
+
 
         private void toolStripChange_Click(object sender, EventArgs e)
         {

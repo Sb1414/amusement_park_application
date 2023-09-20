@@ -93,6 +93,16 @@ namespace amusement_park.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_change_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-change-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_macos_закрыть_20__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-macos-закрыть-20 (1)", resourceCulture);
@@ -116,6 +126,16 @@ namespace amusement_park.Properties {
         internal static System.Drawing.Bitmap icons8_macos_свернуть_20__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-macos-свернуть-20 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_trash_30__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-trash-30 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
