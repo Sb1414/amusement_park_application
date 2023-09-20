@@ -331,10 +331,27 @@ namespace amusement_park
 
         private bool IsValidEmail(string email)
         {
-            // Проверка на корректный Email адрес
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
+
+                // уникальность email адреса
+                string connectionString = "Data Source=sb.db;Version=3;";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT COUNT(*) FROM persons WHERE email = @email";
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@email", email);
+                        int emailCount = Convert.ToInt32(cmd.ExecuteScalar());
+                        if (emailCount > 0)
+                        {
+                            throw new Exception("Email адрес уже существует.");
+                        }
+                    }
+                }
+
                 return addr.Address == email;
             }
             catch

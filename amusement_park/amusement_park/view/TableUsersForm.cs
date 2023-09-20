@@ -1,4 +1,5 @@
-﻿using System;
+﻿using amusement_park.view;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,12 +26,17 @@ namespace amusement_park
 
         private void TableUsersForm_Load(object sender, EventArgs e)
         {
+            loadTable();
+        }
+
+        private void loadTable()
+        {
             // для хранения данных
             DataTable dt = new DataTable();
 
             dataGridViewUsers.AutoGenerateColumns = false;
 
-            // Создайте столбцы для DataGridView
+            // столбцы для DataGridView
             DataGridViewColumn idColumn = new DataGridViewTextBoxColumn();
             idColumn.DataPropertyName = "id";
             idColumn.HeaderText = "ID";
@@ -84,7 +90,6 @@ namespace amusement_park
             }
 
             dataGridViewUsers.DataSource = dt;
-
         }
 
         private void toolStripDelete_Click(object sender, EventArgs e)
@@ -140,6 +145,77 @@ namespace amusement_park
                 MessageBox.Show("Выберите пользователя для удаления.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void toolStripChange_Click(object sender, EventArgs e)
+        {
+            // Проверяем, выбрана ли какая-либо строка в DataGridView
+            DataGridViewRow currentRow = dataGridViewUsers.CurrentRow;
+            if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
+            {
+                // Получаем ID выбранного пользователя
+                int userId = Convert.ToInt32(currentRow.Cells[0].Value);
+                // Создайте и отобразите форму для изменения пароля
+                ChangePasswordForm changePasswordForm = new ChangePasswordForm();
+                changePasswordForm.TopMost = true;
+
+                if (changePasswordForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Получите новый пароль из формы изменения пароля
+                    string newPassword = changePasswordForm.NewPassword;
+
+                    // Обновите пароль пользователя в базе данных
+                    if (UpdatePassword(newPassword, userId))
+                    {
+                        // Обновление успешно завершено, теперь обновляем данные в DataGridView
+                        dataGridViewUsers.Rows[currentRow.Index].Cells[2].Value = newPassword;
+
+                        MessageBox.Show("Пароль успешно изменен.", "Изменение пароля", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Произошла ошибка при изменении пароля.", "Изменение пароля", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя для удаления.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private bool UpdatePassword(string newPassword, int id)
+        {
+
+            if (id == -1)
+            {
+                return false; // Невозможно определить текущего пользователя
+            }
+
+            try
+            {
+                string connectionString = "Data Source=sb.db;Version=3;";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // SQL-запрос для обновления пароля пользователя
+                    string query = "UPDATE users SET password = @newPassword WHERE id = @userId";
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@newPassword", newPassword);
+                        cmd.Parameters.AddWithValue("@userId", id);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                return true; // Успешно обновлен пароль
+            }
+            catch
+            {
+                return false; // Ошибка при обновлении пароля
+            }
+        }
+
 
     }
 }
