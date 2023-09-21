@@ -50,36 +50,45 @@ namespace amusement_park.view
 
             dataGridViewAttractions.AutoGenerateColumns = false;
 
-            DataGridViewColumn loginColumn = new DataGridViewTextBoxColumn();
-            loginColumn.DataPropertyName = "name";
-            loginColumn.HeaderText = "Название";
-            dataGridViewAttractions.Columns.Add(loginColumn);
-
-            DataGridViewColumn passwordColumn = new DataGridViewTextBoxColumn();
-            passwordColumn.DataPropertyName = "description";
-            passwordColumn.HeaderText = "Описание";
-            dataGridViewAttractions.Columns.Add(passwordColumn);
-
             DataGridViewColumn nameColumn = new DataGridViewTextBoxColumn();
-            nameColumn.DataPropertyName = "capacity";
-            nameColumn.HeaderText = "Вместимость";
+            nameColumn.DataPropertyName = "name";
+            nameColumn.HeaderText = "Название";
             dataGridViewAttractions.Columns.Add(nameColumn);
 
-            DataGridViewColumn surnameColumn = new DataGridViewTextBoxColumn();
-            surnameColumn.DataPropertyName = "ticket_price";
-            surnameColumn.HeaderText = "Цена";
-            dataGridViewAttractions.Columns.Add(surnameColumn);
+            DataGridViewColumn descriptionColumn = new DataGridViewTextBoxColumn();
+            descriptionColumn.DataPropertyName = "description";
+            descriptionColumn.HeaderText = "Описание";
+            dataGridViewAttractions.Columns.Add(descriptionColumn);
 
-            DataGridViewColumn dateColumn = new DataGridViewTextBoxColumn();
-            dateColumn.DataPropertyName = "time_work";
-            dateColumn.HeaderText = "Время работы";
-            dataGridViewAttractions.Columns.Add(dateColumn);
+            DataGridViewColumn capacityColumn = new DataGridViewTextBoxColumn();
+            capacityColumn.DataPropertyName = "capacity";
+            capacityColumn.HeaderText = "Вместимость";
+            dataGridViewAttractions.Columns.Add(capacityColumn);
+
+            DataGridViewColumn ticketPriceColumn = new DataGridViewTextBoxColumn();
+            ticketPriceColumn.DataPropertyName = "ticket_price";
+            ticketPriceColumn.HeaderText = "Цена";
+            dataGridViewAttractions.Columns.Add(ticketPriceColumn);
+
+            DataGridViewColumn timeWorkColumn = new DataGridViewTextBoxColumn();
+            timeWorkColumn.DataPropertyName = "time_work";
+            timeWorkColumn.HeaderText = "Время работы";
+            dataGridViewAttractions.Columns.Add(timeWorkColumn);
+
+            DataGridViewColumn limitationsColumn = new DataGridViewTextBoxColumn();
+            limitationsColumn.DataPropertyName = "limitations";
+            limitationsColumn.HeaderText = "Ограничения";
+            dataGridViewAttractions.Columns.Add(limitationsColumn); // Добавляем столбец для ограничений
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "SELECT name, description, capacity, ticket_price, time_work FROM attractions";
+                // Выполняем SQL-запрос для объединения данных из таблиц "attractions" и "limitations"
+                string query = "SELECT a.name, a.description, a.capacity, a.ticket_price, a.time_work, GROUP_CONCAT(l.age_person) as limitations " +
+                               "FROM attractions a " +
+                               "LEFT JOIN limitations l ON a.id = l.attraction_id " +
+                               "GROUP BY a.id";
 
                 using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                 {
@@ -89,6 +98,7 @@ namespace amusement_park.view
 
             dataGridViewAttractions.DataSource = dt;
         }
+
 
         private void toolStripDelete_Click(object sender, EventArgs e)
         {
@@ -156,7 +166,14 @@ namespace amusement_park.view
 
         private void toolStripAdd_Click(object sender, EventArgs e)
         {
+            AddAttractionForm addAttraction = new AddAttractionForm();
+            addAttraction.TopMost = true;
 
+            if (addAttraction.ShowDialog() == DialogResult.OK)
+            {
+                dataGridViewAttractions.Columns.Clear();
+                LoadAttractionsData();
+            }
         }
     }
 }

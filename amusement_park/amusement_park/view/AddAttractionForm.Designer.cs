@@ -103,6 +103,9 @@
             this.textBoxLimit.Name = "textBoxLimit";
             this.textBoxLimit.Size = new System.Drawing.Size(260, 24);
             this.textBoxLimit.TabIndex = 4;
+            this.textBoxLimit.Enter += new System.EventHandler(this.textBoxLimit_Enter);
+            this.textBoxLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLimit_KeyPress);
+            this.textBoxLimit.Leave += new System.EventHandler(this.textBoxLimit_Leave);
             // 
             // textBoxTimeWork
             // 
@@ -114,6 +117,9 @@
             this.textBoxTimeWork.Name = "textBoxTimeWork";
             this.textBoxTimeWork.Size = new System.Drawing.Size(260, 24);
             this.textBoxTimeWork.TabIndex = 3;
+            this.textBoxTimeWork.Enter += new System.EventHandler(this.textBoxTimeWork_Enter);
+            this.textBoxTimeWork.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCapacity_KeyPress);
+            this.textBoxTimeWork.Leave += new System.EventHandler(this.textBoxTimeWork_Leave);
             // 
             // labelInfo
             // 
@@ -147,9 +153,11 @@
             this.textBoxTicketPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(179)))), ((int)(((byte)(51)))));
             this.textBoxTicketPrice.Location = new System.Drawing.Point(39, 78);
             this.textBoxTicketPrice.Name = "textBoxTicketPrice";
-            this.textBoxTicketPrice.PasswordChar = '●';
             this.textBoxTicketPrice.Size = new System.Drawing.Size(260, 24);
             this.textBoxTicketPrice.TabIndex = 4;
+            this.textBoxTicketPrice.Enter += new System.EventHandler(this.textBoxTicketPrice_Enter);
+            this.textBoxTicketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCapacity_KeyPress);
+            this.textBoxTicketPrice.Leave += new System.EventHandler(this.textBoxTicketPrice_Leave);
             // 
             // textBoxCapacity
             // 
@@ -161,6 +169,9 @@
             this.textBoxCapacity.Name = "textBoxCapacity";
             this.textBoxCapacity.Size = new System.Drawing.Size(260, 24);
             this.textBoxCapacity.TabIndex = 3;
+            this.textBoxCapacity.Enter += new System.EventHandler(this.textBoxCapacity_Enter);
+            this.textBoxCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCapacity_KeyPress);
+            this.textBoxCapacity.Leave += new System.EventHandler(this.textBoxCapacity_Leave);
             // 
             // panel2
             // 
@@ -184,6 +195,9 @@
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(260, 24);
             this.textBoxDescription.TabIndex = 2;
+            this.textBoxDescription.Enter += new System.EventHandler(this.textBoxDescription_Enter);
+            this.textBoxDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
+            this.textBoxDescription.Leave += new System.EventHandler(this.textBoxDescription_Leave);
             // 
             // panel4
             // 
@@ -229,6 +243,9 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(260, 24);
             this.textBoxName.TabIndex = 1;
+            this.textBoxName.Enter += new System.EventHandler(this.textBoxName_Enter);
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
+            this.textBoxName.Leave += new System.EventHandler(this.textBoxName_Leave);
             // 
             // buttonSave
             // 
