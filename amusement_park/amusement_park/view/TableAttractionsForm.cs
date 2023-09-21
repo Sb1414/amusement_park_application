@@ -13,6 +13,7 @@ namespace amusement_park.view
 {
     public partial class TableAttractionsForm : Form
     {
+        string connectionString = "Data Source=sb.db;Version=3;";
         public TableAttractionsForm()
         {
             InitializeComponent();
@@ -74,8 +75,6 @@ namespace amusement_park.view
             dateColumn.HeaderText = "Время работы";
             dataGridViewAttractions.Columns.Add(dateColumn);
 
-            string connectionString = "Data Source=sb.db;Version=3;";
-
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
@@ -91,5 +90,73 @@ namespace amusement_park.view
             dataGridViewAttractions.DataSource = dt;
         }
 
+        private void toolStripDelete_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow currentRow = dataGridViewAttractions.CurrentRow;
+            if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
+            {
+                int attractionId = Convert.ToInt32(currentRow.Cells["id"].Value);
+
+                // Удаление рейтингов аттракциона из таблицы attraction_ratings
+                string deleteRatingsQuery = "DELETE FROM attraction_ratings WHERE attraction_id = @attractionId";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(deleteRatingsQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Удаление билетов на аттракцион из таблицы tickets
+                string deleteTicketsQuery = "DELETE FROM tickets WHERE attraction_id = @attractionId";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(deleteTicketsQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Удаление лимитов аттракциона из таблицы limitations
+                string deleteLimitsQuery = "DELETE FROM limitations WHERE attraction_id = @attractionId";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(deleteLimitsQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Удаление самого аттракциона из таблицы attractions
+                string deleteAttractionQuery = "DELETE FROM attractions WHERE id = @attractionId";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(deleteAttractionQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // После удаления обновляем таблицу attractions
+                LoadAttractionsData();
+            }
+            else
+            {
+                MessageBox.Show("Выберите аттракцион для удаления.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void toolStripAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
