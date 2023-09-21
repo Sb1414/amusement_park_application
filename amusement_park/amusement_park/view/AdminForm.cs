@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System;
 using System.Windows.Forms;
+using amusement_park.view;
 
 namespace amusement_park
 {
@@ -52,6 +53,13 @@ namespace amusement_park
             TableUsersForm form = new TableUsersForm();
             form.TopMost = true;
             form.Show();
+        }
+
+        private void labelAttractions_Click(object sender, EventArgs e)
+        {
+            TableAttractionsForm attractionsForm = new TableAttractionsForm();
+            attractionsForm.TopMost = true;
+            attractionsForm.Show();
         }
     }
 }

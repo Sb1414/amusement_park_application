@@ -37,10 +37,6 @@ namespace amusement_park
             dataGridViewUsers.AutoGenerateColumns = false;
 
             // столбцы для DataGridView
-            DataGridViewColumn idColumn = new DataGridViewTextBoxColumn();
-            idColumn.DataPropertyName = "id";
-            idColumn.HeaderText = "ID";
-            dataGridViewUsers.Columns.Add(idColumn);
 
             DataGridViewColumn loginColumn = new DataGridViewTextBoxColumn();
             loginColumn.DataPropertyName = "login";
@@ -80,7 +76,7 @@ namespace amusement_park
                 connection.Open();
 
                 // SQL-запрос для получения данных из таблицы User и Person
-                string query = "SELECT u.id, u.login, u.password, p.name, p.surname, p.date, p.email " +
+                string query = "SELECT u.login, u.password, p.name, p.surname, p.date, p.email " +
                     "FROM users u INNER JOIN persons p ON u.id = p.user_id";
 
                 using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))

@@ -176,6 +176,12 @@
     <Compile Include="view\RegForm.Designer.cs">
       <DependentUpon>RegForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\TableAttractionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\TableAttractionsForm.Designer.cs">
+      <DependentUpon>TableAttractionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\TableUsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     </Compile>
     <EmbeddedResource Include="view\RegForm.resx">
       <DependentUpon>RegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\TableAttractionsForm.resx">
+      <DependentUpon>TableAttractionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\TableUsersForm.resx">
       <DependentUpon>TableUsersForm.cs</DependentUpon>
