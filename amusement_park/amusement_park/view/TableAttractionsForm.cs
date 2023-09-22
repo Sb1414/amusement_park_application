@@ -99,63 +99,63 @@ namespace amusement_park.view
             dataGridViewAttractions.DataSource = dt;
         }
 
-
         private void toolStripDelete_Click(object sender, EventArgs e)
         {
             DataGridViewRow currentRow = dataGridViewAttractions.CurrentRow;
             if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
             {
-                int attractionId = Convert.ToInt32(currentRow.Cells["id"].Value);
+                string attractionName = currentRow.Cells[0].Value.ToString();
 
                 // Удаление рейтингов аттракциона из таблицы attraction_ratings
-                string deleteRatingsQuery = "DELETE FROM attraction_ratings WHERE attraction_id = @attractionId";
+                string deleteRatingsQuery = "DELETE FROM attraction_ratings WHERE attraction_id = (SELECT id FROM attractions WHERE name = @attractionName)";
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(deleteRatingsQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.Parameters.AddWithValue("@attractionName", attractionName);
                         cmd.ExecuteNonQuery();
                     }
                 }
 
                 // Удаление билетов на аттракцион из таблицы tickets
-                string deleteTicketsQuery = "DELETE FROM tickets WHERE attraction_id = @attractionId";
+                string deleteTicketsQuery = "DELETE FROM tickets WHERE attraction_id = (SELECT id FROM attractions WHERE name = @attractionName)";
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(deleteTicketsQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.Parameters.AddWithValue("@attractionName", attractionName);
                         cmd.ExecuteNonQuery();
                     }
                 }
 
                 // Удаление лимитов аттракциона из таблицы limitations
-                string deleteLimitsQuery = "DELETE FROM limitations WHERE attraction_id = @attractionId";
+                string deleteLimitsQuery = "DELETE FROM limitations WHERE attraction_id = (SELECT id FROM attractions WHERE name = @attractionName)";
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(deleteLimitsQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.Parameters.AddWithValue("@attractionName", attractionName);
                         cmd.ExecuteNonQuery();
                     }
                 }
 
                 // Удаление самого аттракциона из таблицы attractions
-                string deleteAttractionQuery = "DELETE FROM attractions WHERE id = @attractionId";
+                string deleteAttractionQuery = "DELETE FROM attractions WHERE name = @attractionName";
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(deleteAttractionQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                        cmd.Parameters.AddWithValue("@attractionName", attractionName);
                         cmd.ExecuteNonQuery();
                     }
                 }
 
                 // После удаления обновляем таблицу attractions
+                dataGridViewAttractions.Columns.Clear();
                 LoadAttractionsData();
             }
             else

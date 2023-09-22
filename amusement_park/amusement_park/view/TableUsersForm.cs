@@ -94,8 +94,7 @@ namespace amusement_park
             DataGridViewRow currentRow = dataGridViewUsers.CurrentRow;
             if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
             {
-                // Получаем ID выбранного пользователя
-                int userId = Convert.ToInt32(currentRow.Cells[0].Value);
+                // Получаем логин выбранного пользователя
                 string userLogin = currentRow.Cells[1].Value.ToString();
 
                 // Проверяем, что выбранный пользователь не админ с логином "admin"
@@ -105,7 +104,7 @@ namespace amusement_park
                     return; // Не выполняем удаление
                 }
 
-                if (DeleteUser(userId))
+                if (DeleteUser(userLogin))
                 {
                     loadTable();
                 }
@@ -116,7 +115,7 @@ namespace amusement_park
             }
         }
 
-        private bool DeleteUser(int userId)
+        private bool DeleteUser(string login)
         {
             try
             {
@@ -126,12 +125,29 @@ namespace amusement_park
                     connection.Open();
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
+                        // Получаем ID пользователя по логину
+                        string getUserIdQuery = "SELECT id FROM users WHERE login = @login";
+                        int userId;
+                        using (SQLiteCommand cmdGetUserId = new SQLiteCommand(getUserIdQuery, connection, transaction))
+                        {
+                            cmdGetUserId.Parameters.AddWithValue("@login", login);
+                            userId = Convert.ToInt32(cmdGetUserId.ExecuteScalar());
+                        }
+
                         // Удаление пользователя из таблицы users
-                        string deleteUserQuery = "DELETE FROM users WHERE id = @userId";
+                        string deleteUserQuery = "DELETE FROM users WHERE login = @login";
                         using (SQLiteCommand cmdDeleteUser = new SQLiteCommand(deleteUserQuery, connection, transaction))
                         {
-                            cmdDeleteUser.Parameters.AddWithValue("@userId", userId);
+                            cmdDeleteUser.Parameters.AddWithValue("@login", login);
                             cmdDeleteUser.ExecuteNonQuery();
+                        }
+
+                        // Удаление записей пользователя из таблицы persons по user_id
+                        string deletePersonQuery = "DELETE FROM persons WHERE user_id = @userId";
+                        using (SQLiteCommand cmdDeletePerson = new SQLiteCommand(deletePersonQuery, connection, transaction))
+                        {
+                            cmdDeletePerson.Parameters.AddWithValue("@userId", userId);
+                            cmdDeletePerson.ExecuteNonQuery();
                         }
 
                         // Обновление ID всех остальных пользователей
@@ -155,14 +171,16 @@ namespace amusement_park
         }
 
 
+
         private void toolStripChange_Click(object sender, EventArgs e)
         {
             // Проверяем, выбрана ли какая-либо строка в DataGridView
             DataGridViewRow currentRow = dataGridViewUsers.CurrentRow;
-            if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
+            if (currentRow.Cells[1].Value != null && !string.IsNullOrEmpty(currentRow.Cells[1].Value.ToString()))
             {
-                // Получаем ID выбранного пользователя
-                int userId = Convert.ToInt32(currentRow.Cells[0].Value);
+                // Получаем логин выбранного пользователя
+                string userLogin = currentRow.Cells[1].Value.ToString();
+
                 // Создайте и отобразите форму для изменения пароля
                 ChangePasswordForm changePasswordForm = new ChangePasswordForm();
                 changePasswordForm.TopMost = true;
@@ -173,10 +191,10 @@ namespace amusement_park
                     string newPassword = changePasswordForm.NewPassword;
 
                     // Обновите пароль пользователя в базе данных
-                    if (UpdatePassword(newPassword, userId))
+                    if (UpdatePassword(newPassword, userLogin))
                     {
                         // Обновление успешно завершено, теперь обновляем данные в DataGridView
-                        dataGridViewUsers.Rows[currentRow.Index].Cells[2].Value = newPassword;
+                        currentRow.Cells[2].Value = newPassword;
 
                         MessageBox.Show("Пароль успешно изменен.", "Изменение пароля", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -192,14 +210,8 @@ namespace amusement_park
             }
         }
 
-        private bool UpdatePassword(string newPassword, int id)
+        private bool UpdatePassword(string newPassword, string login)
         {
-
-            if (id == -1)
-            {
-                return false; // Невозможно определить текущего пользователя
-            }
-
             try
             {
                 string connectionString = "Data Source=sb.db;Version=3;";
@@ -207,12 +219,12 @@ namespace amusement_park
                 {
                     connection.Open();
 
-                    // SQL-запрос для обновления пароля пользователя
-                    string query = "UPDATE users SET password = @newPassword WHERE id = @userId";
+                    // SQL-запрос для обновления пароля пользователя по логину
+                    string query = "UPDATE users SET password = @newPassword WHERE login = @userLogin";
                     using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@newPassword", newPassword);
-                        cmd.Parameters.AddWithValue("@userId", id);
+                        cmd.Parameters.AddWithValue("@userLogin", login);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -225,6 +237,53 @@ namespace amusement_park
             }
         }
 
+        private void toolStripDeleteAll_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить все записи из таблицы?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                if (DeleteAllRecords())
+                {
+                    dataGridViewUsers.Columns.Clear();
+                    loadTable();
+                }
+            }
+        }
+
+        private bool DeleteAllRecords()
+        {
+            try
+            {
+                string connectionString = "Data Source=sb.db;Version=3;";
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        string deletePersonsQuery = "DELETE FROM persons";
+                        using (SQLiteCommand cmdDeletePersons = new SQLiteCommand(deletePersonsQuery, connection, transaction))
+                        {
+                            cmdDeletePersons.ExecuteNonQuery();
+                        }
+
+                        string deleteUsersQuery = "DELETE FROM users";
+                        using (SQLiteCommand cmdDeleteUsers = new SQLiteCommand(deleteUsersQuery, connection, transaction))
+                        {
+                            cmdDeleteUsers.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
+                    }
+                }
+                this.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
     }
 }

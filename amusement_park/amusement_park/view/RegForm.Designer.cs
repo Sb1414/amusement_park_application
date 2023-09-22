@@ -36,7 +36,6 @@
             this.labelInfo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBoxPass = new System.Windows.Forms.TextBox();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBoxSurname = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -49,6 +48,7 @@
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelBorder = new System.Windows.Forms.Panel();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -95,7 +95,7 @@
             this.textBoxDate.Location = new System.Drawing.Point(39, 78);
             this.textBoxDate.Name = "textBoxDate";
             this.textBoxDate.Size = new System.Drawing.Size(260, 24);
-            this.textBoxDate.TabIndex = 4;
+            this.textBoxDate.TabIndex = 6;
             this.textBoxDate.Enter += new System.EventHandler(this.textBoxDate_Enter);
             this.textBoxDate.Leave += new System.EventHandler(this.textBoxDate_Leave);
             // 
@@ -108,7 +108,7 @@
             this.textBoxEmail.Location = new System.Drawing.Point(39, 20);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(260, 24);
-            this.textBoxEmail.TabIndex = 3;
+            this.textBoxEmail.TabIndex = 5;
             this.textBoxEmail.Enter += new System.EventHandler(this.textBoxEmail_Enter);
             this.textBoxEmail.Leave += new System.EventHandler(this.textBoxEmail_Leave);
             // 
@@ -129,8 +129,8 @@
             // 
             this.panel3.BackgroundImage = global::amusement_park.Properties.Resources.backClick;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Controls.Add(this.textBoxPass);
             this.panel3.Controls.Add(this.textBoxLogin);
+            this.panel3.Controls.Add(this.textBoxPass);
             this.panel3.Location = new System.Drawing.Point(94, 209);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(341, 128);
@@ -149,19 +149,6 @@
             this.textBoxPass.TabIndex = 4;
             this.textBoxPass.Enter += new System.EventHandler(this.textBoxPass_Enter);
             this.textBoxPass.Leave += new System.EventHandler(this.textBoxPass_Leave);
-            // 
-            // textBoxLogin
-            // 
-            this.textBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
-            this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxLogin.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold);
-            this.textBoxLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(179)))), ((int)(((byte)(51)))));
-            this.textBoxLogin.Location = new System.Drawing.Point(39, 20);
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(260, 24);
-            this.textBoxLogin.TabIndex = 3;
-            this.textBoxLogin.Enter += new System.EventHandler(this.textBoxLogin_Enter);
-            this.textBoxLogin.Leave += new System.EventHandler(this.textBoxLogin_Leave);
             // 
             // panel2
             // 
@@ -249,7 +236,7 @@
             this.label2.Location = new System.Drawing.Point(1, 570);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(527, 28);
-            this.label2.TabIndex = 17;
+            this.label2.TabIndex = 8;
             this.label2.Text = "Есть аккаунт? Войти";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
@@ -268,7 +255,7 @@
             this.buttonSave.Location = new System.Drawing.Point(154, 511);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(211, 42);
-            this.buttonSave.TabIndex = 16;
+            this.buttonSave.TabIndex = 7;
             this.buttonSave.Text = "Зарегистрироваться";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -324,6 +311,19 @@
             this.panelBorder.Size = new System.Drawing.Size(532, 622);
             this.panelBorder.TabIndex = 4;
             // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.textBoxLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLogin.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold);
+            this.textBoxLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(179)))), ((int)(((byte)(51)))));
+            this.textBoxLogin.Location = new System.Drawing.Point(39, 20);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(260, 24);
+            this.textBoxLogin.TabIndex = 3;
+            this.textBoxLogin.Enter += new System.EventHandler(this.textBoxLogin_Enter);
+            this.textBoxLogin.Leave += new System.EventHandler(this.textBoxLogin_Leave);
+            // 
             // RegForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -356,7 +356,6 @@
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBoxPass;
-        private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBoxSurname;
         private System.Windows.Forms.TextBox textBoxName;
@@ -372,5 +371,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxLogin;
     }
 }

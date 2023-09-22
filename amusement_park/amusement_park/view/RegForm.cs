@@ -15,6 +15,7 @@ namespace amusement_park
 {
     public partial class RegForm : Form
     {
+        string connectionString = "Data Source=sb.db;Version=3;";
         public RegForm()
         {
             InitializeComponent();
@@ -268,7 +269,6 @@ namespace amusement_park
                     Email = textBoxEmail.Text
                 };
 
-                string connectionString = "Data Source=sb.db;Version=3;";
 
                 string queryUsers = "INSERT INTO users (login, password) VALUES (@login, @password)";
                 string queryPersons = "INSERT INTO persons (user_id, name, surname, date, email) VALUES ((SELECT last_insert_rowid()), @name, @surname, @date, @email)";
@@ -315,7 +315,6 @@ namespace amusement_park
         private bool checkUser(string login)
         {
             // Проверка на уникальность логина
-            string connectionString = "Data Source=sb.db;Version=3;";
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
@@ -336,7 +335,6 @@ namespace amusement_park
                 var addr = new System.Net.Mail.MailAddress(email);
 
                 // уникальность email адреса
-                string connectionString = "Data Source=sb.db;Version=3;";
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
