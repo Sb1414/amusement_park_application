@@ -69,6 +69,13 @@ namespace amusement_park.view
                             }
                         };
 
+                        attractionLabel.Click += (sender, e) =>
+                        {
+                            LoginForm loginForm = new LoginForm();
+                            loginForm.TopMost = true;
+                            loginForm.Show();
+                        };
+
                         attractionPanel.Controls.Add(attractionLabel);
 
                         flowLayoutPanel1.Controls.Add(attractionPanel);
