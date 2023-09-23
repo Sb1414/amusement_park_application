@@ -41,6 +41,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BuyTicket = new System.Windows.Forms.Label();
+            this.infoUser = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelUp.SuspendLayout();
             this.panelBorder.SuspendLayout();
@@ -54,18 +55,21 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1070, 615);
+            this.panel1.Size = new System.Drawing.Size(1088, 662);
             this.panel1.TabIndex = 2;
             // 
             // panelUp
             // 
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panelUp.Controls.Add(this.infoUser);
             this.panelUp.Controls.Add(this.buttonClose);
             this.panelUp.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelUp.Location = new System.Drawing.Point(0, 0);
             this.panelUp.Name = "panelUp";
-            this.panelUp.Size = new System.Drawing.Size(1070, 28);
+            this.panelUp.Size = new System.Drawing.Size(1088, 28);
             this.panelUp.TabIndex = 0;
+            this.panelUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
+            this.panelUp.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
             // 
             // buttonClose
             // 
@@ -92,7 +96,7 @@
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(1070, 615);
+            this.panelBorder.Size = new System.Drawing.Size(1088, 662);
             this.panelBorder.TabIndex = 6;
             // 
             // Column1
@@ -156,11 +160,24 @@
             this.BuyTicket.Text = "Купить билет";
             this.BuyTicket.Click += new System.EventHandler(this.BuyTicket_Click);
             // 
+            // infoUser
+            // 
+            this.infoUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.infoUser.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.infoUser.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.infoUser.Location = new System.Drawing.Point(28, 0);
+            this.infoUser.Name = "infoUser";
+            this.infoUser.Size = new System.Drawing.Size(1060, 28);
+            this.infoUser.TabIndex = 3;
+            this.infoUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.infoUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
+            this.infoUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 615);
+            this.ClientSize = new System.Drawing.Size(1088, 662);
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -189,5 +206,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Label BuyTicket;
+        private System.Windows.Forms.Label infoUser;
     }
 }
