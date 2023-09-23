@@ -1,4 +1,5 @@
-﻿using System;
+﻿using amusement_park.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +42,12 @@ namespace amusement_park.view
                         Panel attractionPanel = new Panel();
                         attractionPanel.AutoSize = true;
 
+                        TableLayoutPanel panelLayout = new TableLayoutPanel();
+                        panelLayout.AutoSize = true;
+                        panelLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100)); // Для текста
+                        panelLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100)); // Для кнопки
+
+
                         Label attractionLabel = new Label
                         {
                             Text = $"\n   {row["name"]}  \n" +
@@ -69,14 +76,32 @@ namespace amusement_park.view
                             }
                         };
 
-                        attractionLabel.Click += (sender, e) =>
+                        Button selectButton = new Button();
+                        selectButton.Text = "";
+                        selectButton.AutoSize = false;
+                        selectButton.Size = new Size(40, 40);
+                        selectButton.BackgroundImage = Resources.done;
+                        selectButton.BackgroundImageLayout = ImageLayout.Stretch;
+                        selectButton.FlatStyle = FlatStyle.Flat;
+                        selectButton.FlatAppearance.BorderSize = 0;
+
+
+
+                        // обработчик события для кнопки
+                        selectButton.Click += (sender, e) =>
                         {
                             LoginForm loginForm = new LoginForm();
                             loginForm.TopMost = true;
                             loginForm.Show();
+                            this.Close();
                         };
+                        panelLayout.Controls.Add(attractionLabel, 0, 0);
+                        panelLayout.Controls.Add(selectButton, 1, 0);
 
-                        attractionPanel.Controls.Add(attractionLabel);
+                        attractionPanel.BackgroundImage = Properties.Resources.backgroundAtraction_2;
+                        attractionPanel.BackgroundImageLayout = ImageLayout.Stretch;
+
+                        attractionPanel.Controls.Add(panelLayout);
 
                         flowLayoutPanel1.Controls.Add(attractionPanel);
                     }

@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePasswordForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelInfo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBoxNewPassAgain = new System.Windows.Forms.TextBox();
             this.textBoxNewPass = new System.Windows.Forms.TextBox();
@@ -37,7 +39,6 @@
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelBorder = new System.Windows.Forms.Panel();
-            this.labelInfo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelUp.SuspendLayout();
@@ -57,6 +58,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(508, 334);
             this.panel1.TabIndex = 2;
+            // 
+            // labelInfo
+            // 
+            this.labelInfo.BackColor = System.Drawing.Color.Transparent;
+            this.labelInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelInfo.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(128)))), ((int)(((byte)(132)))));
+            this.labelInfo.Location = new System.Drawing.Point(3, 227);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(527, 28);
+            this.labelInfo.TabIndex = 21;
+            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -158,19 +172,6 @@
             this.panelBorder.Size = new System.Drawing.Size(508, 334);
             this.panelBorder.TabIndex = 4;
             // 
-            // labelInfo
-            // 
-            this.labelInfo.BackColor = System.Drawing.Color.Transparent;
-            this.labelInfo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelInfo.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(128)))), ((int)(((byte)(132)))));
-            this.labelInfo.Location = new System.Drawing.Point(3, 227);
-            this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(527, 28);
-            this.labelInfo.TabIndex = 21;
-            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ChangePasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -178,7 +179,9 @@
             this.ClientSize = new System.Drawing.Size(508, 334);
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePasswordForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChangePasswordForm";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
