@@ -153,6 +153,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="view\AddAttractionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +173,12 @@
     <Compile Include="AppContext.cs" />
     <Compile Include="Attraction.cs" />
     <Compile Include="Attraction_rating.cs" />
+    <Compile Include="view\AttractionsViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\AttractionsViewForm.Designer.cs">
+      <DependentUpon>AttractionsViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +233,9 @@
     <EmbeddedResource Include="view\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\AttractionsViewForm.resx">
+      <DependentUpon>AttractionsViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,14 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="view\RegForm.resx">
       <DependentUpon>RegForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +311,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-delete-all-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weclomeGif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panorama1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundAtraction_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

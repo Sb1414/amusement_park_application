@@ -1,4 +1,5 @@
-﻿using System;
+﻿using amusement_park.view;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,6 +65,15 @@ namespace amusement_park
             LoadForm formLoad = new LoadForm();
             formLoad.TopMost = true; // чтобы форма была верхней
             formLoad.ShowDialog();
+            pictureBoxForGif.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxForGif.Image = amusement_park.Properties.Resources.weclomeGif;
+        }
+
+        private void buttonAttractions_Click(object sender, EventArgs e)
+        {
+            AttractionsViewForm attractionsViewForm = new AttractionsViewForm();
+            attractionsViewForm.TopMost = true;
+            attractionsViewForm.Show();
         }
     }
 }

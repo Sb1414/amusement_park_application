@@ -73,6 +73,16 @@ namespace amusement_park.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgroundAtraction_1 {
+            get {
+                object obj = ResourceManager.GetObject("backgroundAtraction_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap backLogClick {
             get {
                 object obj = ResourceManager.GetObject("backLogClick", resourceCulture);
@@ -163,9 +173,29 @@ namespace amusement_park.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap panorama {
+            get {
+                object obj = ResourceManager.GetObject("panorama", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sochi_load {
             get {
                 object obj = ResourceManager.GetObject("sochi_load", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap weclomeGif {
+            get {
+                object obj = ResourceManager.GetObject("weclomeGif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
