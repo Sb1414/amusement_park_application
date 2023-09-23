@@ -300,6 +300,11 @@ namespace amusement_park
                             transaction.Commit();
                             labelInfo.Text = "Регистрация успешно завершена!";
                             labelInfo.ForeColor = Color.Green;
+
+                            LoginForm form2 = new LoginForm();
+                            form2.TopMost = true;
+                            form2.Show();
+                            this.Close();
                         }
                         catch (Exception ex)
                         {

@@ -153,6 +153,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSession.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +228,12 @@
     </Compile>
     <Compile Include="Ticket.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="view\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="view\AddAttractionForm.resx">
       <DependentUpon>AddAttractionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\TableUsersForm.resx">
       <DependentUpon>TableUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

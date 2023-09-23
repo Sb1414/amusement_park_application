@@ -95,9 +95,10 @@ namespace amusement_park
                                 AdminForm adminForm = new AdminForm();
                                 adminForm.TopMost = true;
                                 adminForm.Show();
+                                this.Close();
                             }
+                            AppSession.IsLoggedIn = true;
                             int userId = Convert.ToInt32(result);
-                            this.Close();
                         }
                         else
                         {
@@ -106,8 +107,6 @@ namespace amusement_park
                         }
                     }
                 }
-
-               
             }
         }
 
