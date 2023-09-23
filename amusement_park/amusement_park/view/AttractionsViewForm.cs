@@ -48,11 +48,26 @@ namespace amusement_park.view
                                 $"  Продолжительность одного проката: {row["time_work"]}  \n  Ограничение в возрасте: {row["limitations"]}  \n\n",
                             AutoSize = true,
                             Font = new Font("Arial", 12, FontStyle.Bold),
-                            ForeColor = Color.White 
+                            ForeColor = Color.White,
+                            BackColor = Color.Transparent 
                         };
 
-                        attractionPanel.BackgroundImage = Properties.Resources.backgroundAtraction_1;
+                        attractionPanel.BackgroundImage = Properties.Resources.backgroundAtraction_2;
                         attractionPanel.BackgroundImageLayout = ImageLayout.Stretch;
+
+                        // это обводка текста
+                        attractionLabel.Paint += (sender, e) =>
+                        {
+                            Label label = (Label)sender;
+                            using (Pen pen = new Pen(Color.Black, 1)) 
+                            {
+                                e.Graphics.DrawString(label.Text, label.Font, pen.Brush, new PointF(1, 1));
+                                e.Graphics.DrawString(label.Text, label.Font, pen.Brush, new PointF(-1, 1));
+                                e.Graphics.DrawString(label.Text, label.Font, pen.Brush, new PointF(1, -1));
+                                e.Graphics.DrawString(label.Text, label.Font, pen.Brush, new PointF(-1, -1));
+                                e.Graphics.DrawString(label.Text, label.Font, Brushes.White, new PointF(0, 0));
+                            }
+                        };
 
                         attractionPanel.Controls.Add(attractionLabel);
 

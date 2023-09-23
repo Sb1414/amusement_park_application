@@ -319,7 +319,7 @@
     <None Include="Resources\panorama1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\backgroundAtraction_1.png" />
+    <None Include="Resources\backgroundAtraction_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
