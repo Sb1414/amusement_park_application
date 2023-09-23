@@ -1,4 +1,5 @@
-﻿using System;
+﻿using amusement_park.view;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -90,14 +91,21 @@ namespace amusement_park
 
                         if (result != null)
                         {
+                            AppSession.IsLoggedIn = true;
+                            AppSession.UserLogin = loginUser;
                             if (loginUser == "admin")
                             {
                                 AdminForm adminForm = new AdminForm();
                                 adminForm.TopMost = true;
                                 adminForm.Show();
                                 this.Close();
+                            } else
+                            {
+                                UserForm userForm = new UserForm();
+                                userForm.TopMost = true;
+                                userForm.Show();
+                                this.Close();
                             }
-                            AppSession.IsLoggedIn = true;
                             int userId = Convert.ToInt32(result);
                         }
                         else
