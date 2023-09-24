@@ -42,6 +42,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BuyTicket = new System.Windows.Forms.Label();
             this.infoUser = new System.Windows.Forms.Label();
+            this.logoutAccount = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelUp.SuspendLayout();
             this.panelBorder.SuspendLayout();
@@ -50,6 +51,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.logoutAccount);
             this.panel1.Controls.Add(this.BuyTicket);
             this.panel1.Controls.Add(this.panelUp);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -173,6 +175,18 @@
             this.infoUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
             this.infoUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
             // 
+            // logoutAccount
+            // 
+            this.logoutAccount.AutoSize = true;
+            this.logoutAccount.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.logoutAccount.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.logoutAccount.Location = new System.Drawing.Point(961, 70);
+            this.logoutAccount.Name = "logoutAccount";
+            this.logoutAccount.Size = new System.Drawing.Size(84, 28);
+            this.logoutAccount.TabIndex = 3;
+            this.logoutAccount.Text = "Выйти";
+            this.logoutAccount.Click += new System.EventHandler(this.logoutAccount_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -207,5 +221,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Label BuyTicket;
         private System.Windows.Forms.Label infoUser;
+        private System.Windows.Forms.Label logoutAccount;
     }
 }

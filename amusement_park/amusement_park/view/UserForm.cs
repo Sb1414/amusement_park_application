@@ -28,7 +28,11 @@ namespace amusement_park.view
         Point lastPoint;
         private void panelUp_MouseMove(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
         }
 
         private void panelUp_MouseDown(object sender, MouseEventArgs e)
@@ -39,7 +43,9 @@ namespace amusement_park.view
 
         private void BuyTicket_Click(object sender, EventArgs e)
         {
-
+            BuyTicketForm ticketForm = new BuyTicketForm();
+            ticketForm.TopMost = true;
+            ticketForm.Show();
         }
 
         private void LoadUserInfo()
@@ -69,5 +75,11 @@ namespace amusement_park.view
             }
         }
 
+        private void logoutAccount_Click(object sender, EventArgs e)
+        {
+            AppSession.IsLoggedIn = false;
+            AppSession.UserLogin = "";
+            this.Close();
+        }
     }
 }

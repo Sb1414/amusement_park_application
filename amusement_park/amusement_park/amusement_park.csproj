@@ -180,6 +180,12 @@
     <Compile Include="view\AttractionsViewForm.Designer.cs">
       <DependentUpon>AttractionsViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\BuyTicketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\BuyTicketForm.Designer.cs">
+      <DependentUpon>BuyTicketForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\AttractionsViewForm.resx">
       <DependentUpon>AttractionsViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\BuyTicketForm.resx">
+      <DependentUpon>BuyTicketForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>

@@ -56,8 +56,16 @@ namespace amusement_park
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog(); // форма как модальное окно
+            if (AppSession.IsLoggedIn == true)
+            {
+                UserForm userForm = new UserForm();
+                userForm.Show();
+            }
+            else
+            {
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog(); // форма как модальное окно
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

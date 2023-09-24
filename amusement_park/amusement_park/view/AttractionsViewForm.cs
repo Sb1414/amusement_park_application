@@ -90,10 +90,21 @@ namespace amusement_park.view
                         // обработчик события для кнопки
                         selectButton.Click += (sender, e) =>
                         {
-                            LoginForm loginForm = new LoginForm();
-                            loginForm.TopMost = true;
-                            loginForm.Show();
-                            this.Close();
+                            if (AppSession.IsLoggedIn == true)
+                            {
+                                BuyTicketForm ticketForm = new BuyTicketForm();
+                                ticketForm.TopMost = true;
+                                ticketForm.Show();
+                                this.Close();
+
+                            } else
+                            {
+                                LoginForm loginForm = new LoginForm();
+                                loginForm.TopMost = true;
+                                loginForm.Show();
+                                this.Close();
+                            }
+
                         };
                         panelLayout.Controls.Add(attractionLabel, 0, 0);
                         panelLayout.Controls.Add(selectButton, 1, 0);
