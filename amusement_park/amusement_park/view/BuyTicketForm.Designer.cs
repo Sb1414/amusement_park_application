@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuyTicketForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BuyButton = new System.Windows.Forms.Button();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelBorder = new System.Windows.Forms.Panel();
@@ -40,8 +42,6 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.BuyButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelUp.SuspendLayout();
             this.panelBorder.SuspendLayout();
@@ -58,6 +58,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1088, 662);
             this.panel1.TabIndex = 2;
+            // 
+            // BuyButton
+            // 
+            this.BuyButton.FlatAppearance.BorderSize = 0;
+            this.BuyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BuyButton.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BuyButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BuyButton.Location = new System.Drawing.Point(877, 600);
+            this.BuyButton.Name = "BuyButton";
+            this.BuyButton.Size = new System.Drawing.Size(138, 28);
+            this.BuyButton.TabIndex = 6;
+            this.BuyButton.Text = "купить";
+            this.BuyButton.UseVisualStyleBackColor = true;
+            this.BuyButton.Click += new System.EventHandler(this.BuyButton_Click);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox1.Font = new System.Drawing.Font("Arial Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(57, 56);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(958, 527);
+            this.checkedListBox1.TabIndex = 1;
             // 
             // panelUp
             // 
@@ -147,29 +172,6 @@
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.BackColor = System.Drawing.SystemColors.WindowText;
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(57, 56);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(958, 527);
-            this.checkedListBox1.TabIndex = 1;
-            // 
-            // BuyButton
-            // 
-            this.BuyButton.FlatAppearance.BorderSize = 0;
-            this.BuyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BuyButton.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BuyButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BuyButton.Location = new System.Drawing.Point(877, 600);
-            this.BuyButton.Name = "BuyButton";
-            this.BuyButton.Size = new System.Drawing.Size(138, 28);
-            this.BuyButton.TabIndex = 6;
-            this.BuyButton.Text = "купить";
-            this.BuyButton.UseVisualStyleBackColor = true;
             // 
             // BuyTicketForm
             // 
