@@ -99,7 +99,7 @@ namespace amusement_park.view
             dataGridViewAttractions.DataSource = dt;
         }
 
-        private void toolStripDelete_Click(object sender, EventArgs e)
+        private void toolStripDeleteAtr_Click(object sender, EventArgs e)
         {
             DataGridViewRow currentRow = dataGridViewAttractions.CurrentRow;
             if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
@@ -164,7 +164,7 @@ namespace amusement_park.view
             }
         }
 
-        private void toolStripAdd_Click(object sender, EventArgs e)
+        private void toolStripAddAtr_Click(object sender, EventArgs e)
         {
             AddAttractionForm addAttraction = new AddAttractionForm();
             addAttraction.TopMost = true;

@@ -92,16 +92,32 @@ namespace amusement_park.view
                         {
                             if (AppSession.IsLoggedIn == true)
                             {
-                                BuyTicketForm ticketForm = new BuyTicketForm();
-                                ticketForm.TopMost = true;
-                                ticketForm.Show();
+                                if (AppSession.ticketForm == null || AppSession.ticketForm.IsDisposed)
+                                {
+                                    AppSession.ticketForm = new BuyTicketForm();
+                                    AppSession.ticketForm.TopMost = true;
+                                    AppSession.ticketForm.FormClosed += (s, args) => AppSession.ticketForm = null;
+                                    AppSession.ticketForm.Show();
+                                }
+                                else
+                                {
+                                    AppSession.ticketForm.Activate();
+                                }
                                 this.Close();
 
                             } else
                             {
-                                LoginForm loginForm = new LoginForm();
-                                loginForm.TopMost = true;
-                                loginForm.Show();
+                                if (AppSession.loginForm == null || AppSession.loginForm.IsDisposed)
+                                {
+                                    AppSession.loginForm = new LoginForm();
+                                    AppSession.loginForm.TopMost = true;
+                                    AppSession.loginForm.FormClosed += (s, args) => AppSession.loginForm = null;
+                                    AppSession.loginForm.Show();
+                                }
+                                else
+                                {
+                                    AppSession.loginForm.Activate();
+                                }
                                 this.Close();
                             }
 

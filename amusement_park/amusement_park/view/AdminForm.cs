@@ -50,16 +50,33 @@ namespace amusement_park
 
         private void labelUsers_Click(object sender, EventArgs e)
         {
-            TableUsersForm form = new TableUsersForm();
-            form.TopMost = true;
-            form.Show();
+            if (AppSession.tableUsersForm == null || AppSession.tableUsersForm.IsDisposed)
+            {
+                AppSession.tableUsersForm = new TableUsersForm();
+                AppSession.tableUsersForm.TopMost = true;
+                AppSession.tableUsersForm.FormClosed += (s, args) => AppSession.tableUsersForm = null;
+                AppSession.tableUsersForm.Show();
+            }
+            else
+            {
+                AppSession.tableUsersForm.Activate();
+            }
         }
 
         private void labelAttractions_Click(object sender, EventArgs e)
         {
-            TableAttractionsForm attractionsForm = new TableAttractionsForm();
-            attractionsForm.TopMost = true;
-            attractionsForm.Show();
+            if (AppSession.AttractionsForm == null || AppSession.AttractionsForm.IsDisposed)
+            {
+                AppSession.AttractionsForm = new TableAttractionsForm();
+                AppSession.AttractionsForm.TopMost = true;
+                AppSession.AttractionsForm.FormClosed += (s, args) => AppSession.AttractionsForm = null;
+                AppSession.AttractionsForm.Show();
+            }
+            else
+            {
+                AppSession.AttractionsForm.Activate();
+            }
         }
     }
+
 }

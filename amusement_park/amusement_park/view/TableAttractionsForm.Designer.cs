@@ -32,9 +32,11 @@
             this.dataGridViewAttractions = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripAdd = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDeleteAtr = new System.Windows.Forms.ToolStripButton();
+            this.toolStripAddAtr = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAttractions)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -82,16 +84,6 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Teal;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1018, 27);
-            this.toolStrip1.TabIndex = 6;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
             // toolStripDelete
             // 
             this.toolStripDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -100,7 +92,6 @@
             this.toolStripDelete.Name = "toolStripDelete";
             this.toolStripDelete.Size = new System.Drawing.Size(29, 24);
             this.toolStripDelete.Text = "toolStripButton1";
-            this.toolStripDelete.Click += new System.EventHandler(this.toolStripDelete_Click);
             // 
             // toolStripAdd
             // 
@@ -110,7 +101,39 @@
             this.toolStripAdd.Name = "toolStripAdd";
             this.toolStripAdd.Size = new System.Drawing.Size(29, 24);
             this.toolStripAdd.Text = "add info";
-            this.toolStripAdd.Click += new System.EventHandler(this.toolStripAdd_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.Color.Teal;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDeleteAtr,
+            this.toolStripAddAtr});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1018, 27);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDeleteAtr
+            // 
+            this.toolStripDeleteAtr.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDeleteAtr.Image = global::amusement_park.Properties.Resources.icons8_trash_30__1_;
+            this.toolStripDeleteAtr.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDeleteAtr.Name = "toolStripDeleteAtr";
+            this.toolStripDeleteAtr.Size = new System.Drawing.Size(29, 24);
+            this.toolStripDeleteAtr.Text = "удалить";
+            this.toolStripDeleteAtr.Click += new System.EventHandler(this.toolStripDeleteAtr_Click);
+            // 
+            // toolStripAddAtr
+            // 
+            this.toolStripAddAtr.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripAddAtr.Image = global::amusement_park.Properties.Resources.icons8_add_30;
+            this.toolStripAddAtr.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripAddAtr.Name = "toolStripAddAtr";
+            this.toolStripAddAtr.Size = new System.Drawing.Size(29, 24);
+            this.toolStripAddAtr.Text = "добавить";
+            this.toolStripAddAtr.Click += new System.EventHandler(this.toolStripAddAtr_Click);
             // 
             // TableAttractionsForm
             // 
@@ -140,8 +163,10 @@
         private System.Windows.Forms.DataGridView dataGridViewAttractions;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripDelete;
         private System.Windows.Forms.ToolStripButton toolStripAdd;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripDeleteAtr;
+        private System.Windows.Forms.ToolStripButton toolStripAddAtr;
     }
 }

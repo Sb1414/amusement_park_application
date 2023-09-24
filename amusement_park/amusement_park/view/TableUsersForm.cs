@@ -103,32 +103,6 @@ namespace amusement_park
             dataGridViewUsers.DataSource = dt;
         }
 
-        private void toolStripDelete_Click(object sender, EventArgs e)
-        {
-            // выбрана ли какая-либо строка в DataGridView
-            DataGridViewRow currentRow = dataGridViewUsers.CurrentRow;
-            if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
-            {
-                string userLogin = currentRow.Cells[1].Value.ToString();
-
-                // проверка что это не админ с логином "admin"
-                if (userLogin == "admin")
-                {
-                    MessageBox.Show("Нельзя удалить пользователя 'admin'.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (DeleteUser(userLogin))
-                {
-                    loadTable();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите пользователя для удаления.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         private bool DeleteUser(string login)
         {
             try
@@ -179,39 +153,6 @@ namespace amusement_park
             }
         }
 
-
-        private void toolStripChange_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow currentRow = dataGridViewUsers.CurrentRow;
-            if (currentRow.Cells[1].Value != null && !string.IsNullOrEmpty(currentRow.Cells[1].Value.ToString()))
-            {
-                string userLogin = currentRow.Cells[1].Value.ToString();
-
-                ChangePasswordForm changePasswordForm = new ChangePasswordForm();
-                changePasswordForm.TopMost = true;
-
-                if (changePasswordForm.ShowDialog() == DialogResult.OK)
-                {
-                    string newPassword = changePasswordForm.NewPassword;
-
-                    if (UpdatePassword(newPassword, userLogin))
-                    {
-                        currentRow.Cells[2].Value = newPassword;
-
-                        MessageBox.Show("Пароль успешно изменен.", "Изменение пароля", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Произошла ошибка при изменении пароля.", "Изменение пароля", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Выберите пользователя для изменения пароля.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         private bool UpdatePassword(string newPassword, string login)
         {
             try
@@ -236,20 +177,6 @@ namespace amusement_park
             catch
             {
                 return false;
-            }
-        }
-
-        private void toolStripDeleteAll_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить все записи из таблицы?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                if (DeleteAllRecords())
-                {
-                    dataGridViewUsers.Columns.Clear();
-                    loadTable();
-                }
             }
         }
 
@@ -287,5 +214,81 @@ namespace amusement_park
             }
         }
 
+        private void toolStripButtonDeleteAll_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить все записи из таблицы?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                if (DeleteAllRecords())
+                {
+                    dataGridViewUsers.Columns.Clear();
+                    loadTable();
+                }
+            }
+        }
+
+        private void toolStripButtonChange_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow currentRow = dataGridViewUsers.CurrentRow;
+            if (currentRow.Cells[1].Value != null && !string.IsNullOrEmpty(currentRow.Cells[1].Value.ToString()))
+            {
+                string userLogin = currentRow.Cells[1].Value.ToString();
+
+                ChangePasswordForm changePasswordForm = new ChangePasswordForm();
+                changePasswordForm.TopMost = true;
+
+                if (changePasswordForm.ShowDialog() == DialogResult.OK)
+                {
+                    string newPassword = changePasswordForm.NewPassword;
+
+                    if (UpdatePassword(newPassword, userLogin))
+                    {
+                        currentRow.Cells[1].Value = newPassword;
+
+                        MessageBox.Show("Пароль успешно изменен.", "Изменение пароля", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Произошла ошибка при изменении пароля.", "Изменение пароля", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя для изменения пароля.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void toolStripButtonDelete_Click(object sender, EventArgs e)
+        {
+            // выбрана ли какая-либо строка в DataGridView
+            DataGridViewRow currentRow = dataGridViewUsers.CurrentRow;
+            if (currentRow.Cells[0].Value != null && currentRow.Cells[0].Value != "")
+            {
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить пользователя?", "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    string userLogin = currentRow.Cells[1].Value.ToString();
+
+                    // проверка что это не админ с логином "admin"
+                    if (userLogin == "admin")
+                    {
+                        MessageBox.Show("Нельзя удалить пользователя 'admin'.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (DeleteUser(userLogin))
+                    {
+                        loadTable();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите пользователя для удаления.", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

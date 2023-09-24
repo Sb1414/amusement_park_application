@@ -36,5 +36,7 @@ namespace amusement_park.view
         {
             lastPoint = new Point(e.X, e.Y);
         }
+
+
     }
 }

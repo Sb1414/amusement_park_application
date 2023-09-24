@@ -33,6 +33,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonDeleteAll = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonChange = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripChange = new System.Windows.Forms.ToolStripButton();
             this.toolStripDeleteAll = new System.Windows.Forms.ToolStripButton();
@@ -87,41 +90,60 @@
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.Teal;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonDeleteAll,
+            this.toolStripButtonChange,
+            this.toolStripButtonDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(996, 27);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButtonDeleteAll
+            // 
+            this.toolStripButtonDeleteAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDeleteAll.Image = global::amusement_park.Properties.Resources.icons8_delete_all_30;
+            this.toolStripButtonDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDeleteAll.Name = "toolStripButtonDeleteAll";
+            this.toolStripButtonDeleteAll.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButtonDeleteAll.Text = "удалить всех";
+            this.toolStripButtonDeleteAll.Click += new System.EventHandler(this.toolStripButtonDeleteAll_Click);
+            // 
+            // toolStripButtonChange
+            // 
+            this.toolStripButtonChange.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonChange.Image = global::amusement_park.Properties.Resources.icons8_change_30;
+            this.toolStripButtonChange.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonChange.Name = "toolStripButtonChange";
+            this.toolStripButtonChange.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButtonChange.Text = "изменить пароль";
+            this.toolStripButtonChange.Click += new System.EventHandler(this.toolStripButtonChange_Click);
+            // 
+            // toolStripButtonDelete
+            // 
+            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDelete.Image = global::amusement_park.Properties.Resources.icons8_trash_30__1_;
+            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
+            this.toolStripButtonDelete.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButtonDelete.Text = "удалить пользователя";
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
+            // 
             // toolStripDelete
             // 
-            this.toolStripDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDelete.Image = global::amusement_park.Properties.Resources.icons8_trash_30__1_;
-            this.toolStripDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDelete.Name = "toolStripDelete";
-            this.toolStripDelete.Size = new System.Drawing.Size(29, 24);
-            this.toolStripDelete.Text = "удалить пользователя";
-            this.toolStripDelete.Click += new System.EventHandler(this.toolStripDelete_Click);
+            this.toolStripDelete.Size = new System.Drawing.Size(23, 23);
             // 
             // toolStripChange
             // 
-            this.toolStripChange.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripChange.Image = global::amusement_park.Properties.Resources.icons8_change_30;
-            this.toolStripChange.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripChange.Name = "toolStripChange";
-            this.toolStripChange.Size = new System.Drawing.Size(29, 24);
-            this.toolStripChange.Text = "изменить пароль";
-            this.toolStripChange.Click += new System.EventHandler(this.toolStripChange_Click);
+            this.toolStripChange.Size = new System.Drawing.Size(23, 23);
             // 
             // toolStripDeleteAll
             // 
-            this.toolStripDeleteAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDeleteAll.Image = global::amusement_park.Properties.Resources.icons8_delete_all_30;
-            this.toolStripDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDeleteAll.Name = "toolStripDeleteAll";
-            this.toolStripDeleteAll.Size = new System.Drawing.Size(29, 24);
-            this.toolStripDeleteAll.Text = "удалить все данные";
-            this.toolStripDeleteAll.Click += new System.EventHandler(this.toolStripDeleteAll_Click);
+            this.toolStripDeleteAll.Size = new System.Drawing.Size(23, 23);
             // 
             // TableUsersForm
             // 
@@ -155,5 +177,8 @@
         private System.Windows.Forms.ToolStripButton toolStripDelete;
         private System.Windows.Forms.ToolStripButton toolStripChange;
         private System.Windows.Forms.ToolStripButton toolStripDeleteAll;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDeleteAll;
+        private System.Windows.Forms.ToolStripButton toolStripButtonChange;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
     }
 }

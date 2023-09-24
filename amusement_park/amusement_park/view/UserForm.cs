@@ -43,9 +43,17 @@ namespace amusement_park.view
 
         private void BuyTicket_Click(object sender, EventArgs e)
         {
-            BuyTicketForm ticketForm = new BuyTicketForm();
-            ticketForm.TopMost = true;
-            ticketForm.Show();
+            if (AppSession.ticketForm == null || AppSession.ticketForm.IsDisposed)
+            {
+                AppSession.ticketForm = new BuyTicketForm();
+                AppSession.ticketForm.TopMost = true;
+                AppSession.ticketForm.FormClosed += (s, args) => AppSession.ticketForm = null;
+                AppSession.ticketForm.Show();
+            }
+            else
+            {
+                AppSession.ticketForm.Activate();
+            }
         }
 
         private void LoadUserInfo()

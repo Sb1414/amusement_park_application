@@ -58,13 +58,31 @@ namespace amusement_park
         {
             if (AppSession.IsLoggedIn == true)
             {
-                UserForm userForm = new UserForm();
-                userForm.Show();
+                if (AppSession.userForm == null || AppSession.userForm.IsDisposed)
+                {
+                    AppSession.userForm = new UserForm();
+                    AppSession.userForm.TopMost = true;
+                    AppSession.userForm.FormClosed += (s, args) => AppSession.userForm = null;
+                    AppSession.userForm.Show();
+                }
+                else
+                {
+                    AppSession.userForm.Activate();
+                }
             }
             else
             {
-                LoginForm loginForm = new LoginForm();
-                loginForm.ShowDialog(); // форма как модальное окно
+                if (AppSession.loginForm == null || AppSession.loginForm.IsDisposed)
+                {
+                    AppSession.loginForm = new LoginForm();
+                    AppSession.loginForm.TopMost = true;
+                    AppSession.loginForm.FormClosed += (s, args) => AppSession.loginForm = null;
+                    AppSession.loginForm.Show();
+                }
+                else
+                {
+                    AppSession.loginForm.Activate();
+                }
             }
         }
 
@@ -79,9 +97,17 @@ namespace amusement_park
 
         private void buttonAttractions_Click(object sender, EventArgs e)
         {
-            AttractionsViewForm attractionsViewForm = new AttractionsViewForm();
-            attractionsViewForm.TopMost = true;
-            attractionsViewForm.Show();
+            if (AppSession.attractionsViewForm == null || AppSession.attractionsViewForm.IsDisposed)
+            {
+                AppSession.attractionsViewForm = new AttractionsViewForm();
+                AppSession.attractionsViewForm.TopMost = true;
+                AppSession.attractionsViewForm.FormClosed += (s, args) => AppSession.attractionsViewForm = null;
+                AppSession.attractionsViewForm.Show();
+            }
+            else
+            {
+                AppSession.attractionsViewForm.Activate();
+            }
         }
     }
 }

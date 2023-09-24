@@ -225,9 +225,18 @@ namespace amusement_park
         }
         private void label2_Click_1(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Hide();
+            if (AppSession.loginForm == null || AppSession.loginForm.IsDisposed)
+            {
+                AppSession.loginForm = new LoginForm();
+                AppSession.loginForm.TopMost = true;
+                AppSession.loginForm.FormClosed += (s, args) => AppSession.loginForm = null;
+                AppSession.loginForm.Show();
+            }
+            else
+            {
+                AppSession.loginForm.Activate();
+            }
+            this.Close();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -301,9 +310,17 @@ namespace amusement_park
                             labelInfo.Text = "Регистрация успешно завершена!";
                             labelInfo.ForeColor = Color.Green;
 
-                            LoginForm form2 = new LoginForm();
-                            form2.TopMost = true;
-                            form2.Show();
+                            if (AppSession.loginForm == null || AppSession.loginForm.IsDisposed)
+                            {
+                                AppSession.loginForm = new LoginForm();
+                                AppSession.loginForm.TopMost = true;
+                                AppSession.loginForm.FormClosed += (s, args) => AppSession.loginForm = null;
+                                AppSession.loginForm.Show();
+                            }
+                            else
+                            {
+                                AppSession.loginForm.Activate();
+                            }
                             this.Close();
                         }
                         catch (Exception ex)

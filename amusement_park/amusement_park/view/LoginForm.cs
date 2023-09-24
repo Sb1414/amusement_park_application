@@ -46,10 +46,18 @@ namespace amusement_park
 
         private void label2_Click(object sender, EventArgs e)
         {
-            RegForm form2 = new RegForm();
-            form2.TopMost = true;
-            form2.Show();
-            this.Hide();
+            if (AppSession.regForm == null || AppSession.regForm.IsDisposed)
+            {
+                AppSession.regForm = new RegForm();
+                AppSession.regForm.TopMost = true;
+                AppSession.regForm.FormClosed += (s, args) => AppSession.regForm = null;
+                AppSession.regForm.Show();
+            }
+            else
+            {
+                AppSession.regForm.Activate();
+            }
+            this.Close();
         }
 
         private void label2_MouseHover(object sender, EventArgs e)
@@ -95,15 +103,31 @@ namespace amusement_park
                             AppSession.UserLogin = loginUser;
                             if (loginUser == "admin")
                             {
-                                AdminForm adminForm = new AdminForm();
-                                adminForm.TopMost = true;
-                                adminForm.Show();
+                                if (AppSession.adminForm == null || AppSession.adminForm.IsDisposed)
+                                {
+                                    AppSession.adminForm = new AdminForm();
+                                    AppSession.adminForm.TopMost = true;
+                                    AppSession.adminForm.FormClosed += (s, args) => AppSession.adminForm = null;
+                                    AppSession.adminForm.Show();
+                                }
+                                else
+                                {
+                                    AppSession.adminForm.Activate();
+                                }
                                 this.Close();
                             } else
                             {
-                                UserForm userForm = new UserForm();
-                                userForm.TopMost = true;
-                                userForm.Show();
+                                if (AppSession.userForm == null || AppSession.userForm.IsDisposed)
+                                {
+                                    AppSession.userForm = new UserForm();
+                                    AppSession.userForm.TopMost = true;
+                                    AppSession.userForm.FormClosed += (s, args) => AppSession.userForm = null;
+                                    AppSession.userForm.Show();
+                                }
+                                else
+                                {
+                                    AppSession.userForm.Activate();
+                                }
                                 this.Close();
                             }
                             int userId = Convert.ToInt32(result);
