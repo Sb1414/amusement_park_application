@@ -45,7 +45,119 @@ namespace amusement_park.view
 
         private void BuyButton_Click(object sender, EventArgs e)
         {
+            int userId = GetUserIdByLogin(AppSession.UserLogin);
 
+            if (userId == 0)
+            {
+                MessageBox.Show("Не удалось найти идентификатор пользователя.");
+                return;
+            }
+
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                if (checkedListBox1.GetItemChecked(i))
+                {
+                    string fullItemText = checkedListBox1.Items[i].ToString();
+                    string[] parts = fullItemText.Split(new string[] { "   " }, StringSplitOptions.None);
+
+                    if (parts.Length >= 2)
+                    {
+                        string attractionName = parts[0];
+
+                        if (attractionPrices.ContainsKey(attractionName))
+                        {
+                            int attractionId = GetAttractionIdByName(attractionName);
+
+                            if (attractionId != 0)
+                            {
+                                string insertQuery = "INSERT INTO tickets (person_id, attraction_id) VALUES (@personId, @attractionId);";
+
+                                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                                {
+                                    connection.Open();
+
+                                    using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, connection))
+                                    {
+                                        cmd.Parameters.AddWithValue("@personId", userId);
+                                        cmd.Parameters.AddWithValue("@attractionId", attractionId);
+
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                                        if (rowsAffected > 0)
+                                        {
+                                            MessageBox.Show($"Куплен билет на аттракцион: {attractionName}");
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show($"Не удалось купить билет на аттракцион: {attractionName}");
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Не удалось найти аттракцион с именем: {attractionName}");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Не удалось найти цену для аттракциона: {attractionName}");
+                        }
+                    }
+                }
+            }
+        }
+
+        private int GetAttractionIdByName(string attractionName)
+        {
+            int attractionId = 0;
+
+            string query = "SELECT id FROM attractions WHERE name = @name;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@name", attractionName);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null && int.TryParse(result.ToString(), out attractionId))
+                    {
+                        return attractionId;
+                    }
+                }
+            }
+
+            return attractionId;
+        }
+
+        private int GetUserIdByLogin(string login)
+        {
+            int userId = 0;
+
+            string query = "SELECT id FROM users WHERE login = @login;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@login", login);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null && int.TryParse(result.ToString(), out userId))
+                    {
+                        return userId;
+                    }
+                }
+            }
+
+            return userId;
         }
 
         private void LoadAvailableAttractions()
