@@ -14,7 +14,6 @@ namespace amusement_park
 {
     public partial class TableUsersForm : Form
     {
-
         string connectionString = "Data Source=sb.db;Version=3;";
         public TableUsersForm()
         {
