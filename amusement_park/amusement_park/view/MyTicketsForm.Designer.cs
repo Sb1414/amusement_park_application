@@ -1,6 +1,6 @@
 ﻿namespace amusement_park.view
 {
-    partial class UserForm
+    partial class MyTicketsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyTicketsForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.logoutAccount = new System.Windows.Forms.Label();
-            this.BuyTicket = new System.Windows.Forms.Label();
             this.panelUp = new System.Windows.Forms.Panel();
-            this.infoUser = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,18 +40,17 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MyTickets = new System.Windows.Forms.Label();
+            this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panelUp.SuspendLayout();
             this.panelBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
-            this.panel1.Controls.Add(this.MyTickets);
-            this.panel1.Controls.Add(this.logoutAccount);
-            this.panel1.Controls.Add(this.BuyTicket);
+            this.panel1.Controls.Add(this.dataGridViewTickets);
             this.panel1.Controls.Add(this.panelUp);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -62,34 +58,9 @@
             this.panel1.Size = new System.Drawing.Size(1088, 662);
             this.panel1.TabIndex = 2;
             // 
-            // logoutAccount
-            // 
-            this.logoutAccount.AutoSize = true;
-            this.logoutAccount.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.logoutAccount.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.logoutAccount.Location = new System.Drawing.Point(961, 70);
-            this.logoutAccount.Name = "logoutAccount";
-            this.logoutAccount.Size = new System.Drawing.Size(84, 28);
-            this.logoutAccount.TabIndex = 3;
-            this.logoutAccount.Text = "Выйти";
-            this.logoutAccount.Click += new System.EventHandler(this.logoutAccount_Click);
-            // 
-            // BuyTicket
-            // 
-            this.BuyTicket.AutoSize = true;
-            this.BuyTicket.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BuyTicket.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BuyTicket.Location = new System.Drawing.Point(50, 70);
-            this.BuyTicket.Name = "BuyTicket";
-            this.BuyTicket.Size = new System.Drawing.Size(159, 28);
-            this.BuyTicket.TabIndex = 2;
-            this.BuyTicket.Text = "Купить билет";
-            this.BuyTicket.Click += new System.EventHandler(this.BuyTicket_Click);
-            // 
             // panelUp
             // 
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
-            this.panelUp.Controls.Add(this.infoUser);
             this.panelUp.Controls.Add(this.buttonClose);
             this.panelUp.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelUp.Location = new System.Drawing.Point(0, 0);
@@ -98,19 +69,6 @@
             this.panelUp.TabIndex = 0;
             this.panelUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
             this.panelUp.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
-            // 
-            // infoUser
-            // 
-            this.infoUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.infoUser.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoUser.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.infoUser.Location = new System.Drawing.Point(28, 0);
-            this.infoUser.Name = "infoUser";
-            this.infoUser.Size = new System.Drawing.Size(1060, 28);
-            this.infoUser.TabIndex = 3;
-            this.infoUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.infoUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
-            this.infoUser.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
             // 
             // buttonClose
             // 
@@ -138,7 +96,7 @@
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(1088, 662);
-            this.panelBorder.TabIndex = 6;
+            this.panelBorder.TabIndex = 7;
             // 
             // Column1
             // 
@@ -189,19 +147,17 @@
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
             // 
-            // MyTickets
+            // dataGridViewTickets
             // 
-            this.MyTickets.AutoSize = true;
-            this.MyTickets.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MyTickets.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MyTickets.Location = new System.Drawing.Point(50, 134);
-            this.MyTickets.Name = "MyTickets";
-            this.MyTickets.Size = new System.Drawing.Size(147, 28);
-            this.MyTickets.TabIndex = 4;
-            this.MyTickets.Text = "Мои билеты";
-            this.MyTickets.Click += new System.EventHandler(this.MyTickets_Click);
+            this.dataGridViewTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTickets.Location = new System.Drawing.Point(27, 54);
+            this.dataGridViewTickets.Name = "dataGridViewTickets";
+            this.dataGridViewTickets.RowHeadersWidth = 51;
+            this.dataGridViewTickets.RowTemplate.Height = 24;
+            this.dataGridViewTickets.Size = new System.Drawing.Size(1033, 460);
+            this.dataGridViewTickets.TabIndex = 1;
             // 
-            // UserForm
+            // MyTicketsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,13 +165,14 @@
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "UserForm";
+            this.Name = "MyTicketsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UserForm";
+            this.Text = "MyTicketsForm";
+            this.Load += new System.EventHandler(this.MyTicketsForm_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panelUp.ResumeLayout(false);
             this.panelBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -233,9 +190,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Label BuyTicket;
-        private System.Windows.Forms.Label infoUser;
-        private System.Windows.Forms.Label logoutAccount;
-        private System.Windows.Forms.Label MyTickets;
+        private System.Windows.Forms.DataGridView dataGridViewTickets;
     }
 }
