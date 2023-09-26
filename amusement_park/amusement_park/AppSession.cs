@@ -14,13 +14,14 @@ namespace amusement_park
         public static TableAttractionsForm AttractionsForm { get; set; }
         public static UserForm userForm { get; set; }
         public static TableUsersForm tableUsersForm { get; set; }
-        public static TableAttractionsForm attractionsForm { get; set; }
+        public static MyTicketsForm myTicketsForm { get; set; }
         public static RegForm regForm { get; set; }
         public static LoginForm loginForm { get; set; }
         public static ChangePasswordForm changePasswordForm { get; set; }
         public static BuyTicketForm ticketForm { get; set; }
         public static AttractionsViewForm attractionsViewForm { get; set; }
         public static AdminForm adminForm { get; set; }
+
 
     }
 
