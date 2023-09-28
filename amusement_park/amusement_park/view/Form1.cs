@@ -58,17 +58,33 @@ namespace amusement_park
         {
             if (AppSession.IsLoggedIn == true)
             {
-                if (AppSession.userForm == null || AppSession.userForm.IsDisposed)
+                if (AppSession.UserLogin == "admin")
                 {
-                    AppSession.userForm = new UserForm();
-                    AppSession.userForm.TopMost = true;
-                    AppSession.userForm.FormClosed += (s, args) => AppSession.userForm = null;
-                    AppSession.userForm.Show();
-                }
-                else
+                    if (AppSession.adminForm == null || AppSession.adminForm.IsDisposed)
+                    {
+                        AppSession.adminForm = new AdminForm();
+                        AppSession.adminForm.TopMost = true;
+                        AppSession.adminForm.FormClosed += (s, args) => AppSession.adminForm = null;
+                        AppSession.adminForm.Show();
+                    }
+                    else
+                    {
+                        AppSession.adminForm.Activate();
+                    }
+                } else
                 {
-                    AppSession.userForm.Activate();
-                }
+                    if (AppSession.userForm == null || AppSession.userForm.IsDisposed)
+                    {
+                        AppSession.userForm = new UserForm();
+                        AppSession.userForm.TopMost = true;
+                        AppSession.userForm.FormClosed += (s, args) => AppSession.userForm = null;
+                        AppSession.userForm.Show();
+                    }
+                    else
+                    {
+                        AppSession.userForm.Activate();
+                    }
+                }                
             }
             else
             {
