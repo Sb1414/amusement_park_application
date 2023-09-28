@@ -14,9 +14,11 @@ namespace amusement_park.view
     public partial class MyTicketsForm : Form
     {
         string connectionString = "Data Source=sb.db;Version=3;";
-        public MyTicketsForm()
+        bool check = false;
+        public MyTicketsForm(bool check)
         {
             InitializeComponent();
+            this.check = check;
         }
 
         Point lastPoint;
@@ -40,6 +42,18 @@ namespace amusement_park.view
         }
 
         private void MyTicketsForm_Load(object sender, EventArgs e)
+        {
+            if (check)
+            {
+                ifCheckTrue();
+            } 
+            else
+            {
+                ifCheckFalse();
+            }
+        }
+
+        private void ifCheckFalse()
         {
             DataTable dt = new DataTable();
 
@@ -78,5 +92,45 @@ namespace amusement_park.view
             dataGridViewTickets.DataSource = dt;
         }
 
+        private void ifCheckTrue()
+        {
+            DataTable dt = new DataTable();
+
+            dataGridViewTickets.AutoGenerateColumns = false;
+
+            DataGridViewColumn fullNameColumn = new DataGridViewTextBoxColumn();
+            fullNameColumn.DataPropertyName = "fullName";
+            fullNameColumn.HeaderText = "Имя";
+            dataGridViewTickets.Columns.Add(fullNameColumn);
+
+            DataGridViewColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = "name";
+            nameColumn.HeaderText = "Название аттракциона";
+            dataGridViewTickets.Columns.Add(nameColumn);
+
+            DataGridViewColumn priceColumn = new DataGridViewTextBoxColumn();
+            priceColumn.DataPropertyName = "ticket_price";
+            priceColumn.HeaderText = "Цена";
+            dataGridViewTickets.Columns.Add(priceColumn);
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT p.name || ' ' || p.surname AS fullName, at.name, at.ticket_price " +
+                               "FROM attractions at " +
+                               "INNER JOIN tickets t ON at.id = t.attraction_id " +
+                               "INNER JOIN persons p ON t.person_id = p.id " +
+                               "INNER JOIN users u ON p.user_id = u.id ";
+
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+                {
+                    adapter.Fill(dt);
+                }
+            }
+
+            dataGridViewTickets.DataSource = dt;
+
+        }
     }
 }

@@ -94,7 +94,7 @@ namespace amusement_park.view
         {
             if (AppSession.myTicketsForm == null || AppSession.myTicketsForm.IsDisposed)
             {
-                AppSession.myTicketsForm = new MyTicketsForm();
+                AppSession.myTicketsForm = new MyTicketsForm(false);
                 AppSession.myTicketsForm.TopMost = true;
                 AppSession.myTicketsForm.FormClosed += (s, args) => AppSession.myTicketsForm = null;
                 AppSession.myTicketsForm.Show();

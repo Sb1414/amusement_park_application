@@ -77,6 +77,21 @@ namespace amusement_park
                 AppSession.AttractionsForm.Activate();
             }
         }
+
+        private void allTickets_Click(object sender, EventArgs e)
+        {
+            if (AppSession.myTicketsForm == null || AppSession.myTicketsForm.IsDisposed)
+            {
+                AppSession.myTicketsForm = new MyTicketsForm(true);
+                AppSession.myTicketsForm.TopMost = true;
+                AppSession.myTicketsForm.FormClosed += (s, args) => AppSession.myTicketsForm = null;
+                AppSession.myTicketsForm.Show();
+            }
+            else
+            {
+                AppSession.myTicketsForm.Activate();
+            }
+        }
     }
 
 }

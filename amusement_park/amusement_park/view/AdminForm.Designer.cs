@@ -33,6 +33,7 @@ namespace amusement_park
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelAttractions = new System.Windows.Forms.Label();
             this.labelUsers = new System.Windows.Forms.Label();
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonMaximiz = new System.Windows.Forms.Button();
@@ -46,7 +47,7 @@ namespace amusement_park
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelAttractions = new System.Windows.Forms.Label();
+            this.allTickets = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelUp.SuspendLayout();
             this.panelBorder.SuspendLayout();
@@ -55,6 +56,7 @@ namespace amusement_park
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.allTickets);
             this.panel1.Controls.Add(this.labelAttractions);
             this.panel1.Controls.Add(this.labelUsers);
             this.panel1.Controls.Add(this.panelUp);
@@ -63,6 +65,18 @@ namespace amusement_park
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1088, 662);
             this.panel1.TabIndex = 2;
+            // 
+            // labelAttractions
+            // 
+            this.labelAttractions.AutoSize = true;
+            this.labelAttractions.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAttractions.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelAttractions.Location = new System.Drawing.Point(647, 307);
+            this.labelAttractions.Name = "labelAttractions";
+            this.labelAttractions.Size = new System.Drawing.Size(157, 28);
+            this.labelAttractions.TabIndex = 2;
+            this.labelAttractions.Text = "аттракционы";
+            this.labelAttractions.Click += new System.EventHandler(this.labelAttractions_Click);
             // 
             // labelUsers
             // 
@@ -203,17 +217,17 @@ namespace amusement_park
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
             // 
-            // labelAttractions
+            // allTickets
             // 
-            this.labelAttractions.AutoSize = true;
-            this.labelAttractions.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAttractions.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelAttractions.Location = new System.Drawing.Point(647, 307);
-            this.labelAttractions.Name = "labelAttractions";
-            this.labelAttractions.Size = new System.Drawing.Size(157, 28);
-            this.labelAttractions.TabIndex = 2;
-            this.labelAttractions.Text = "аттракционы";
-            this.labelAttractions.Click += new System.EventHandler(this.labelAttractions_Click);
+            this.allTickets.AutoSize = true;
+            this.allTickets.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.allTickets.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.allTickets.Location = new System.Drawing.Point(647, 422);
+            this.allTickets.Name = "allTickets";
+            this.allTickets.Size = new System.Drawing.Size(94, 28);
+            this.allTickets.TabIndex = 3;
+            this.allTickets.Text = "билеты";
+            this.allTickets.Click += new System.EventHandler(this.allTickets_Click);
             // 
             // AdminForm
             // 
@@ -251,5 +265,6 @@ namespace amusement_park
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Label labelUsers;
         private System.Windows.Forms.Label labelAttractions;
+        private System.Windows.Forms.Label allTickets;
     }
 }
