@@ -172,8 +172,8 @@
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AppContext.cs" />
-    <Compile Include="Attraction.cs" />
-    <Compile Include="Attraction_rating.cs" />
+    <Compile Include="models\Attraction.cs" />
+    <Compile Include="models\Attraction_rating.cs" />
     <Compile Include="view\AttractionsViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,13 +192,19 @@
     <Compile Include="view\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\FeedbackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FeedbackForm.Designer.cs">
+      <DependentUpon>FeedbackForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Limitation.cs" />
+    <Compile Include="models\Limitation.cs" />
     <Compile Include="view\LoadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,7 +217,7 @@
     <Compile Include="view\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
+    <Compile Include="models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\MyTicketsForm.cs">
@@ -238,8 +244,8 @@
     <Compile Include="view\TableUsersForm.Designer.cs">
       <DependentUpon>TableUsersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ticket.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="models\Ticket.cs" />
+    <Compile Include="models\User.cs" />
     <Compile Include="view\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\FeedbackForm.resx">
+      <DependentUpon>FeedbackForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -351,6 +360,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\done.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-star-30 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-star-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-star-30 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-star-30 %283%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
