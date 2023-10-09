@@ -45,6 +45,9 @@
             this.star1 = new System.Windows.Forms.PictureBox();
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.buttonSend = new System.Windows.Forms.Button();
             this.panelBorder.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelForStars.SuspendLayout();
@@ -118,6 +121,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.buttonSend);
+            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.domainUpDown1);
             this.panel1.Controls.Add(this.panelForStars);
             this.panel1.Controls.Add(this.panelUp);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -133,7 +139,7 @@
             this.panelForStars.Controls.Add(this.star3);
             this.panelForStars.Controls.Add(this.star2);
             this.panelForStars.Controls.Add(this.star1);
-            this.panelForStars.Location = new System.Drawing.Point(54, 72);
+            this.panelForStars.Location = new System.Drawing.Point(348, 121);
             this.panelForStars.Name = "panelForStars";
             this.panelForStars.Size = new System.Drawing.Size(150, 30);
             this.panelForStars.TabIndex = 2;
@@ -148,6 +154,7 @@
             this.star5.Size = new System.Drawing.Size(30, 30);
             this.star5.TabIndex = 5;
             this.star5.TabStop = false;
+            this.star5.Click += new System.EventHandler(this.star5_Click);
             this.star5.MouseEnter += new System.EventHandler(this.star5_MouseEnter);
             this.star5.MouseLeave += new System.EventHandler(this.star5_MouseLeave);
             // 
@@ -161,6 +168,7 @@
             this.star4.Size = new System.Drawing.Size(30, 30);
             this.star4.TabIndex = 4;
             this.star4.TabStop = false;
+            this.star4.Click += new System.EventHandler(this.star4_Click);
             this.star4.MouseEnter += new System.EventHandler(this.star4_MouseEnter);
             this.star4.MouseLeave += new System.EventHandler(this.star4_MouseLeave);
             // 
@@ -174,6 +182,7 @@
             this.star3.Size = new System.Drawing.Size(30, 30);
             this.star3.TabIndex = 3;
             this.star3.TabStop = false;
+            this.star3.Click += new System.EventHandler(this.star3_Click);
             this.star3.MouseEnter += new System.EventHandler(this.star3_MouseEnter);
             this.star3.MouseLeave += new System.EventHandler(this.star3_MouseLeave);
             // 
@@ -187,6 +196,7 @@
             this.star2.Size = new System.Drawing.Size(30, 30);
             this.star2.TabIndex = 2;
             this.star2.TabStop = false;
+            this.star2.Click += new System.EventHandler(this.star2_Click);
             this.star2.MouseEnter += new System.EventHandler(this.star2_MouseEnter);
             this.star2.MouseLeave += new System.EventHandler(this.star2_MouseLeave);
             // 
@@ -200,6 +210,7 @@
             this.star1.Size = new System.Drawing.Size(30, 30);
             this.star1.TabIndex = 1;
             this.star1.TabStop = false;
+            this.star1.Click += new System.EventHandler(this.star1_Click);
             this.star1.MouseEnter += new System.EventHandler(this.star1_MouseEnter);
             this.star1.MouseLeave += new System.EventHandler(this.star1_MouseLeave);
             // 
@@ -232,6 +243,37 @@
             this.buttonClose.TabIndex = 1;
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // domainUpDown1
+            // 
+            this.domainUpDown1.Location = new System.Drawing.Point(54, 121);
+            this.domainUpDown1.Name = "domainUpDown1";
+            this.domainUpDown1.ReadOnly = true;
+            this.domainUpDown1.Size = new System.Drawing.Size(229, 22);
+            this.domainUpDown1.Sorted = true;
+            this.domainUpDown1.TabIndex = 3;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(54, 174);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(444, 96);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
+            // buttonSend
+            // 
+            this.buttonSend.FlatAppearance.BorderSize = 0;
+            this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSend.Font = new System.Drawing.Font("Arial Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSend.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSend.Location = new System.Drawing.Point(378, 304);
+            this.buttonSend.Name = "buttonSend";
+            this.buttonSend.Size = new System.Drawing.Size(120, 31);
+            this.buttonSend.TabIndex = 5;
+            this.buttonSend.Text = "отправить";
+            this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
             // FeedbackForm
             // 
@@ -274,5 +316,8 @@
         private System.Windows.Forms.PictureBox star4;
         private System.Windows.Forms.PictureBox star3;
         private System.Windows.Forms.PictureBox star2;
+        private System.Windows.Forms.DomainUpDown domainUpDown1;
+        private System.Windows.Forms.Button buttonSend;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
