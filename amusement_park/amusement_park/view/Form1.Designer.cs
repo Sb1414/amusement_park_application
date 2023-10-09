@@ -31,8 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelBorder = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBoxForGif = new System.Windows.Forms.PictureBox();
             this.panelUp = new System.Windows.Forms.Panel();
+            this.buttonAttractions = new System.Windows.Forms.Button();
+            this.buttonMaximiz = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
+            this.buttonMinimiz = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,15 +45,10 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonAttractions = new System.Windows.Forms.Button();
-            this.pictureBoxForGif = new System.Windows.Forms.PictureBox();
-            this.buttonMaximiz = new System.Windows.Forms.Button();
-            this.buttonMinimiz = new System.Windows.Forms.Button();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.panelBorder.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForGif)).BeginInit();
+            this.panelUp.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBorder
@@ -72,6 +72,18 @@
             this.panel1.Size = new System.Drawing.Size(1088, 662);
             this.panel1.TabIndex = 2;
             // 
+            // pictureBoxForGif
+            // 
+            this.pictureBoxForGif.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxForGif.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxForGif.Image = global::amusement_park.Properties.Resources.weclomeGif;
+            this.pictureBoxForGif.InitialImage = null;
+            this.pictureBoxForGif.Location = new System.Drawing.Point(0, 28);
+            this.pictureBoxForGif.Name = "pictureBoxForGif";
+            this.pictureBoxForGif.Size = new System.Drawing.Size(1088, 634);
+            this.pictureBoxForGif.TabIndex = 2;
+            this.pictureBoxForGif.TabStop = false;
+            // 
             // panelUp
             // 
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
@@ -88,15 +100,87 @@
             this.panelUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
             this.panelUp.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
             // 
+            // buttonAttractions
+            // 
+            this.buttonAttractions.FlatAppearance.BorderSize = 0;
+            this.buttonAttractions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAttractions.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAttractions.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAttractions.Location = new System.Drawing.Point(792, 0);
+            this.buttonAttractions.Name = "buttonAttractions";
+            this.buttonAttractions.Size = new System.Drawing.Size(138, 28);
+            this.buttonAttractions.TabIndex = 5;
+            this.buttonAttractions.Text = "аттракционы";
+            this.buttonAttractions.UseVisualStyleBackColor = true;
+            this.buttonAttractions.Click += new System.EventHandler(this.buttonAttractions_Click);
+            // 
+            // buttonMaximiz
+            // 
+            this.buttonMaximiz.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMaximiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonMaximiz.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMaximiz.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonMaximiz.FlatAppearance.BorderSize = 0;
+            this.buttonMaximiz.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonMaximiz.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonMaximiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMaximiz.Image = global::amusement_park.Properties.Resources.icons8_macos_полный_экран_20__1_;
+            this.buttonMaximiz.Location = new System.Drawing.Point(56, 0);
+            this.buttonMaximiz.Name = "buttonMaximiz";
+            this.buttonMaximiz.Size = new System.Drawing.Size(28, 28);
+            this.buttonMaximiz.TabIndex = 4;
+            this.buttonMaximiz.UseVisualStyleBackColor = false;
+            this.buttonMaximiz.Click += new System.EventHandler(this.buttonMaximiz_Click);
+            // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(510, 0);
+            this.buttonLogin.FlatAppearance.BorderSize = 0;
+            this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogin.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonLogin.Location = new System.Drawing.Point(950, 0);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(138, 28);
             this.buttonLogin.TabIndex = 1;
             this.buttonLogin.Text = "войти";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            // 
+            // buttonMinimiz
+            // 
+            this.buttonMinimiz.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMinimiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonMinimiz.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonMinimiz.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonMinimiz.FlatAppearance.BorderSize = 0;
+            this.buttonMinimiz.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonMinimiz.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonMinimiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMinimiz.Image = global::amusement_park.Properties.Resources.icons8_macos_свернуть_20__1_;
+            this.buttonMinimiz.Location = new System.Drawing.Point(28, 0);
+            this.buttonMinimiz.Name = "buttonMinimiz";
+            this.buttonMinimiz.Size = new System.Drawing.Size(28, 28);
+            this.buttonMinimiz.TabIndex = 3;
+            this.buttonMinimiz.UseVisualStyleBackColor = false;
+            this.buttonMinimiz.Click += new System.EventHandler(this.buttonMinimiz_Click);
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.BackColor = System.Drawing.Color.Transparent;
+            this.buttonClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.buttonClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonClose.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Image = global::amusement_park.Properties.Resources.icons8_macos_закрыть_20__1_;
+            this.buttonClose.Location = new System.Drawing.Point(0, 0);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(28, 28);
+            this.buttonClose.TabIndex = 1;
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // Column1
             // 
@@ -147,84 +231,6 @@
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
             // 
-            // buttonAttractions
-            // 
-            this.buttonAttractions.FlatAppearance.BorderSize = 0;
-            this.buttonAttractions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAttractions.Location = new System.Drawing.Point(677, 0);
-            this.buttonAttractions.Name = "buttonAttractions";
-            this.buttonAttractions.Size = new System.Drawing.Size(138, 28);
-            this.buttonAttractions.TabIndex = 5;
-            this.buttonAttractions.Text = "аттракционы";
-            this.buttonAttractions.UseVisualStyleBackColor = true;
-            this.buttonAttractions.Click += new System.EventHandler(this.buttonAttractions_Click);
-            // 
-            // pictureBoxForGif
-            // 
-            this.pictureBoxForGif.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxForGif.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxForGif.Image = global::amusement_park.Properties.Resources.weclomeGif;
-            this.pictureBoxForGif.InitialImage = null;
-            this.pictureBoxForGif.Location = new System.Drawing.Point(0, 28);
-            this.pictureBoxForGif.Name = "pictureBoxForGif";
-            this.pictureBoxForGif.Size = new System.Drawing.Size(1088, 634);
-            this.pictureBoxForGif.TabIndex = 2;
-            this.pictureBoxForGif.TabStop = false;
-            // 
-            // buttonMaximiz
-            // 
-            this.buttonMaximiz.BackColor = System.Drawing.Color.Transparent;
-            this.buttonMaximiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonMaximiz.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonMaximiz.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonMaximiz.FlatAppearance.BorderSize = 0;
-            this.buttonMaximiz.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonMaximiz.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonMaximiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMaximiz.Image = global::amusement_park.Properties.Resources.icons8_macos_полный_экран_20__1_;
-            this.buttonMaximiz.Location = new System.Drawing.Point(56, 0);
-            this.buttonMaximiz.Name = "buttonMaximiz";
-            this.buttonMaximiz.Size = new System.Drawing.Size(28, 28);
-            this.buttonMaximiz.TabIndex = 4;
-            this.buttonMaximiz.UseVisualStyleBackColor = false;
-            this.buttonMaximiz.Click += new System.EventHandler(this.buttonMaximiz_Click);
-            // 
-            // buttonMinimiz
-            // 
-            this.buttonMinimiz.BackColor = System.Drawing.Color.Transparent;
-            this.buttonMinimiz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonMinimiz.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonMinimiz.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonMinimiz.FlatAppearance.BorderSize = 0;
-            this.buttonMinimiz.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonMinimiz.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonMinimiz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMinimiz.Image = global::amusement_park.Properties.Resources.icons8_macos_свернуть_20__1_;
-            this.buttonMinimiz.Location = new System.Drawing.Point(28, 0);
-            this.buttonMinimiz.Name = "buttonMinimiz";
-            this.buttonMinimiz.Size = new System.Drawing.Size(28, 28);
-            this.buttonMinimiz.TabIndex = 3;
-            this.buttonMinimiz.UseVisualStyleBackColor = false;
-            this.buttonMinimiz.Click += new System.EventHandler(this.buttonMinimiz_Click);
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.BackColor = System.Drawing.Color.Transparent;
-            this.buttonClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.buttonClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonClose.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Image = global::amusement_park.Properties.Resources.icons8_macos_закрыть_20__1_;
-            this.buttonClose.Location = new System.Drawing.Point(0, 0);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(28, 28);
-            this.buttonClose.TabIndex = 1;
-            this.buttonClose.UseVisualStyleBackColor = false;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -239,8 +245,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelBorder.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panelUp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForGif)).EndInit();
+            this.panelUp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

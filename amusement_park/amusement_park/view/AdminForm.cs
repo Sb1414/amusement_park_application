@@ -92,6 +92,13 @@ namespace amusement_park
                 AppSession.myTicketsForm.Activate();
             }
         }
+
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            AppSession.IsLoggedIn = false;
+            AppSession.UserLogin = "";
+            this.Close();
+        }
     }
 
 }
