@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MyTickets = new System.Windows.Forms.Label();
             this.logoutAccount = new System.Windows.Forms.Label();
             this.BuyTicket = new System.Windows.Forms.Label();
             this.panelUp = new System.Windows.Forms.Panel();
@@ -43,7 +44,7 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MyTickets = new System.Windows.Forms.Label();
+            this.sendFeedback = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelUp.SuspendLayout();
             this.panelBorder.SuspendLayout();
@@ -52,6 +53,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.sendFeedback);
             this.panel1.Controls.Add(this.MyTickets);
             this.panel1.Controls.Add(this.logoutAccount);
             this.panel1.Controls.Add(this.BuyTicket);
@@ -61,6 +63,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1088, 662);
             this.panel1.TabIndex = 2;
+            // 
+            // MyTickets
+            // 
+            this.MyTickets.AutoSize = true;
+            this.MyTickets.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MyTickets.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.MyTickets.Location = new System.Drawing.Point(50, 134);
+            this.MyTickets.Name = "MyTickets";
+            this.MyTickets.Size = new System.Drawing.Size(147, 28);
+            this.MyTickets.TabIndex = 4;
+            this.MyTickets.Text = "Мои билеты";
+            this.MyTickets.Click += new System.EventHandler(this.MyTickets_Click);
             // 
             // logoutAccount
             // 
@@ -189,17 +203,17 @@
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
             // 
-            // MyTickets
+            // sendFeedback
             // 
-            this.MyTickets.AutoSize = true;
-            this.MyTickets.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MyTickets.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.MyTickets.Location = new System.Drawing.Point(50, 134);
-            this.MyTickets.Name = "MyTickets";
-            this.MyTickets.Size = new System.Drawing.Size(147, 28);
-            this.MyTickets.TabIndex = 4;
-            this.MyTickets.Text = "Мои билеты";
-            this.MyTickets.Click += new System.EventHandler(this.MyTickets_Click);
+            this.sendFeedback.AutoSize = true;
+            this.sendFeedback.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sendFeedback.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.sendFeedback.Location = new System.Drawing.Point(50, 201);
+            this.sendFeedback.Name = "sendFeedback";
+            this.sendFeedback.Size = new System.Drawing.Size(187, 28);
+            this.sendFeedback.TabIndex = 5;
+            this.sendFeedback.Text = "Оставить отзыв";
+            this.sendFeedback.Click += new System.EventHandler(this.sendFeedback_Click);
             // 
             // UserForm
             // 
@@ -237,5 +251,6 @@
         private System.Windows.Forms.Label infoUser;
         private System.Windows.Forms.Label logoutAccount;
         private System.Windows.Forms.Label MyTickets;
+        private System.Windows.Forms.Label sendFeedback;
     }
 }
