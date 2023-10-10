@@ -267,11 +267,102 @@ namespace amusement_park.view
                     throw new Exception("Аттракцион не выбран");
                 }
 
+                int attractionId = GetAttractionIdByName(domainUpDown1.Text);
 
+                if (attractionId == -1)
+                {
+                    throw new Exception("Не удалось определить ID аттракциона");
+                }
+
+                int userId = GetUserIdByLogin(AppSession.UserLogin);
+
+                if (userId == -1)
+                {
+                    throw new Exception("Не удалось определить ID пользователя");
+                }
+
+                InsertRating(userId, attractionId, stars, richTextBox1.Text);
+
+                MessageBox.Show("Отзыв успешно добавлен");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private int GetUserIdByLogin(string login)
+        {
+            int userId = -1;
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT id FROM users WHERE login = @login";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@login", login);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        userId = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return userId;
+        }
+
+        private int GetAttractionIdByName(string attractionName)
+        {
+            int attractionId = -1;
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT id FROM attractions WHERE name = @attractionName";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@attractionName", attractionName);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        attractionId = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return attractionId;
+        }
+
+
+
+        private void InsertRating(int userId, int attractionId, int rating, string comment)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "INSERT INTO attraction_ratings (person_id, attraction_id, rating, comment) " +
+                               "VALUES (@userId, @attractionId, @rating, @comment)";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@attractionId", attractionId);
+                    cmd.Parameters.AddWithValue("@rating", rating);
+                    cmd.Parameters.AddWithValue("@comment", comment);
+
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
