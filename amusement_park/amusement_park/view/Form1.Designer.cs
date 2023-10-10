@@ -45,6 +45,7 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonFeedback = new System.Windows.Forms.Button();
             this.panelBorder.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForGif)).BeginInit();
@@ -87,6 +88,7 @@
             // panelUp
             // 
             this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panelUp.Controls.Add(this.buttonFeedback);
             this.panelUp.Controls.Add(this.buttonAttractions);
             this.panelUp.Controls.Add(this.buttonMaximiz);
             this.panelUp.Controls.Add(this.buttonLogin);
@@ -231,6 +233,20 @@
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
             // 
+            // buttonFeedback
+            // 
+            this.buttonFeedback.FlatAppearance.BorderSize = 0;
+            this.buttonFeedback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFeedback.Font = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonFeedback.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonFeedback.Location = new System.Drawing.Point(630, 0);
+            this.buttonFeedback.Name = "buttonFeedback";
+            this.buttonFeedback.Size = new System.Drawing.Size(138, 28);
+            this.buttonFeedback.TabIndex = 6;
+            this.buttonFeedback.Text = "отзывы";
+            this.buttonFeedback.UseVisualStyleBackColor = true;
+            this.buttonFeedback.Click += new System.EventHandler(this.buttonFeedback_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -269,6 +285,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.PictureBox pictureBoxForGif;
         private System.Windows.Forms.Button buttonAttractions;
+        private System.Windows.Forms.Button buttonFeedback;
     }
 }
 

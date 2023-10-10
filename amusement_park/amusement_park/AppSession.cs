@@ -22,6 +22,7 @@ namespace amusement_park
         public static AttractionsViewForm attractionsViewForm { get; set; }
         public static AdminForm adminForm { get; set; }
         public static FeedbackForm feedbackForm { get; set; }
+        public static AllFeedbackForm allFeedbackForm { get; set; }
 
     }
 

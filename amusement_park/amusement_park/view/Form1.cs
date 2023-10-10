@@ -125,5 +125,20 @@ namespace amusement_park
                 AppSession.attractionsViewForm.Activate();
             }
         }
+
+        private void buttonFeedback_Click(object sender, EventArgs e)
+        {
+            if (AppSession.allFeedbackForm == null || AppSession.allFeedbackForm.IsDisposed)
+            {
+                AppSession.allFeedbackForm = new AllFeedbackForm();
+                AppSession.allFeedbackForm.TopMost = true;
+                AppSession.allFeedbackForm.FormClosed += (s, args) => AppSession.allFeedbackForm = null;
+                AppSession.allFeedbackForm.Show();
+            }
+            else
+            {
+                AppSession.allFeedbackForm.Activate();
+            }
+        }
     }
 }

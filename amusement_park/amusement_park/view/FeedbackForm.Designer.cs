@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FeedbackForm));
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,23 +42,23 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.panelForStars = new System.Windows.Forms.Panel();
+            this.panelUp = new System.Windows.Forms.Panel();
+            this.label_num = new System.Windows.Forms.Label();
             this.star5 = new System.Windows.Forms.PictureBox();
             this.star4 = new System.Windows.Forms.PictureBox();
             this.star3 = new System.Windows.Forms.PictureBox();
             this.star2 = new System.Windows.Forms.PictureBox();
             this.star1 = new System.Windows.Forms.PictureBox();
-            this.panelUp = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.label_num = new System.Windows.Forms.Label();
             this.panelBorder.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelForStars.SuspendLayout();
+            this.panelUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.star5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).BeginInit();
-            this.panelUp.SuspendLayout();
             this.SuspendLayout();
             // 
             // Column3
@@ -178,6 +179,26 @@
             this.panelForStars.Size = new System.Drawing.Size(150, 30);
             this.panelForStars.TabIndex = 2;
             // 
+            // panelUp
+            // 
+            this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panelUp.Controls.Add(this.buttonClose);
+            this.panelUp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelUp.Location = new System.Drawing.Point(0, 0);
+            this.panelUp.Name = "panelUp";
+            this.panelUp.Size = new System.Drawing.Size(823, 28);
+            this.panelUp.TabIndex = 0;
+            this.panelUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
+            this.panelUp.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
+            // 
+            // label_num
+            // 
+            this.label_num.Font = new System.Drawing.Font("Arial Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_num.Location = new System.Drawing.Point(54, 273);
+            this.label_num.Name = "label_num";
+            this.label_num.Size = new System.Drawing.Size(444, 23);
+            this.label_num.TabIndex = 6;
+            // 
             // star5
             // 
             this.star5.BackColor = System.Drawing.Color.Transparent;
@@ -248,18 +269,6 @@
             this.star1.MouseEnter += new System.EventHandler(this.star1_MouseEnter);
             this.star1.MouseLeave += new System.EventHandler(this.star1_MouseLeave);
             // 
-            // panelUp
-            // 
-            this.panelUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
-            this.panelUp.Controls.Add(this.buttonClose);
-            this.panelUp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUp.Location = new System.Drawing.Point(0, 0);
-            this.panelUp.Name = "panelUp";
-            this.panelUp.Size = new System.Drawing.Size(823, 28);
-            this.panelUp.TabIndex = 0;
-            this.panelUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseDown);
-            this.panelUp.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelUp_MouseMove);
-            // 
             // buttonClose
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Transparent;
@@ -278,14 +287,6 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // label_num
-            // 
-            this.label_num.Font = new System.Drawing.Font("Arial Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_num.Location = new System.Drawing.Point(54, 273);
-            this.label_num.Name = "label_num";
-            this.label_num.Size = new System.Drawing.Size(444, 23);
-            this.label_num.TabIndex = 6;
-            // 
             // FeedbackForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -293,18 +294,19 @@
             this.ClientSize = new System.Drawing.Size(823, 519);
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FeedbackForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FeedbackForm";
             this.panelBorder.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panelForStars.ResumeLayout(false);
+            this.panelUp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.star5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.star1)).EndInit();
-            this.panelUp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

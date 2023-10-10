@@ -344,7 +344,6 @@ namespace amusement_park.view
         }
 
 
-
         private void InsertRating(int userId, int attractionId, int rating, string comment)
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
