@@ -37,6 +37,9 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonSend = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.panelForStars = new System.Windows.Forms.Panel();
             this.star5 = new System.Windows.Forms.PictureBox();
             this.star4 = new System.Windows.Forms.PictureBox();
@@ -45,9 +48,7 @@
             this.star1 = new System.Windows.Forms.PictureBox();
             this.panelUp = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.buttonSend = new System.Windows.Forms.Button();
+            this.label_num = new System.Windows.Forms.Label();
             this.panelBorder.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelForStars.SuspendLayout();
@@ -121,6 +122,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.label_num);
             this.panel1.Controls.Add(this.buttonSend);
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.domainUpDown1);
@@ -131,6 +133,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(823, 519);
             this.panel1.TabIndex = 2;
+            // 
+            // buttonSend
+            // 
+            this.buttonSend.FlatAppearance.BorderSize = 0;
+            this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSend.Font = new System.Drawing.Font("Arial Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSend.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSend.Location = new System.Drawing.Point(378, 306);
+            this.buttonSend.Name = "buttonSend";
+            this.buttonSend.Size = new System.Drawing.Size(120, 31);
+            this.buttonSend.TabIndex = 5;
+            this.buttonSend.Text = "отправить";
+            this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(54, 174);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(444, 96);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // domainUpDown1
+            // 
+            this.domainUpDown1.Location = new System.Drawing.Point(54, 121);
+            this.domainUpDown1.Name = "domainUpDown1";
+            this.domainUpDown1.ReadOnly = true;
+            this.domainUpDown1.Size = new System.Drawing.Size(229, 22);
+            this.domainUpDown1.Sorted = true;
+            this.domainUpDown1.TabIndex = 3;
             // 
             // panelForStars
             // 
@@ -244,36 +278,13 @@
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // domainUpDown1
+            // label_num
             // 
-            this.domainUpDown1.Location = new System.Drawing.Point(54, 121);
-            this.domainUpDown1.Name = "domainUpDown1";
-            this.domainUpDown1.ReadOnly = true;
-            this.domainUpDown1.Size = new System.Drawing.Size(229, 22);
-            this.domainUpDown1.Sorted = true;
-            this.domainUpDown1.TabIndex = 3;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(54, 174);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(444, 96);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
-            // 
-            // buttonSend
-            // 
-            this.buttonSend.FlatAppearance.BorderSize = 0;
-            this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSend.Font = new System.Drawing.Font("Arial Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSend.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonSend.Location = new System.Drawing.Point(378, 304);
-            this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(120, 31);
-            this.buttonSend.TabIndex = 5;
-            this.buttonSend.Text = "отправить";
-            this.buttonSend.UseVisualStyleBackColor = true;
-            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
+            this.label_num.Font = new System.Drawing.Font("Arial Black", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_num.Location = new System.Drawing.Point(54, 273);
+            this.label_num.Name = "label_num";
+            this.label_num.Size = new System.Drawing.Size(444, 23);
+            this.label_num.TabIndex = 6;
             // 
             // FeedbackForm
             // 
@@ -319,5 +330,6 @@
         private System.Windows.Forms.DomainUpDown domainUpDown1;
         private System.Windows.Forms.Button buttonSend;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label_num;
     }
 }

@@ -250,7 +250,42 @@ namespace amusement_park.view
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (stars == 0)
+                {
+                    throw new Exception("Не выбрана оценка");
+                }
 
+                if (richTextBox1.Text.Length < 20)
+                {
+                    throw new Exception("Комментарий должен содержать более 20 символов");
+                }
+
+                if (string.IsNullOrWhiteSpace(domainUpDown1.Text))
+                {
+                    throw new Exception("Аттракцион не выбран");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            label_num.Text = $"Количество символов: {richTextBox1.Text.Length}";
+            if (richTextBox1.Text.Length > 20)
+            {
+                label_num.ForeColor = Color.Green;
+            } else
+            {
+                label_num.ForeColor = Color.Red;
+            }
+        }
+
     }
 }
